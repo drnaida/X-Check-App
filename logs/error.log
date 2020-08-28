@@ -1,0 +1,1 @@
+{"statusCode":400,"statusText":"Bad Request","url":"/users","method":"POST","query":{},"body":{"name":"","password":""},"level":"error","message":"   Request Error"}
