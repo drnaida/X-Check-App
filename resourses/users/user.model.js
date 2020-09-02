@@ -7,13 +7,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: uuid.v1
   },
-  name: String,
+  githubId: String,
   password: String,
+  roles: [String]
 });
 
 userSchema.statics.toResponse = user => {
-  const { id, name, login } = user;
-  return { id, name, login };
+  const { id, githubId, roles } = user;
+  return { id, githubId, roles };
 };
 
 userSchema.pre('save', async function encodePassword(next) {
