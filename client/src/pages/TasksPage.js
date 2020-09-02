@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const TasksPage = () => {
-  return (
-    <div>Tasks page</div>
-  )
+  return <div>Tasks page</div>;
 };
 
 export default TasksPage;
