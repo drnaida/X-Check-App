@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import { useCallback } from 'react';
 
 export const useHttp = () => {
 
@@ -18,7 +18,6 @@ export const useHttp = () => {
       throw e;
     }
   }, [])
-
 
   return { request }
 }
