@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const ReviewRequestsPage = () => {
-  return (
-    <div>Review requests page</div>
-  )
+  return <div>Review requests page</div>;
 };
 
 export default ReviewRequestsPage;
