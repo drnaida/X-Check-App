@@ -1,1 +1,6 @@
 {"statusCode":400,"statusText":"Bad Request","url":"/users","method":"POST","query":{},"body":{"name":"","password":""},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/favicon.ico","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/home","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/tasks","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}

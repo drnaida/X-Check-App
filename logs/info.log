@@ -6,3 +6,45 @@
 {"url":"/users","method":"POST","query":{},"body":{"name":"","password":""},"level":"info","message":"    Request logging"}
 {"statusCode":400,"statusText":"Bad Request","url":"/users","method":"POST","query":{},"body":{"name":"","password":""},"level":"error","message":"   Request Error"}
 {"url":"/users","method":"POST","query":{},"body":{"name":"","password":"ыва"},"level":"info","message":"    Request logging"}
+{"url":"/","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/favicon.ico","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/favicon.ico","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/home","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/home","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/tasks","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"Anzhelika","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"0r1@nd0c@","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
+{"url":"/users","method":"POST","query":{},"body":{"githubId":"","password":"B0$t0N","roles":[],"name":"drnaida","role":"on"},"level":"info","message":"    Request logging"}
