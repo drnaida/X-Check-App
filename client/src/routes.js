@@ -6,9 +6,10 @@ import HomePage from './pages/HomePage';
 import TasksPage from './pages/TasksPage';
 import CreateTaskPage from './pages/CreateTaskPage';
 import ReviewRequestsPage from './pages/ReviewRequestsPage';
+import AddRequirement from './pages/AddRequirement';
 
 export const useRoutes = isAuthenticated => {
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
     return (
       <Switch>
         <Route path="/home">
@@ -22,6 +23,9 @@ export const useRoutes = isAuthenticated => {
         </Route>
         <Route path="/create-tasks">
           <CreateTaskPage />
+        </Route>
+        <Route path="/add-requirement">
+          <AddRequirement />
         </Route>
         <Redirect to="/home" />
       </Switch>

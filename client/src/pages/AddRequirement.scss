@@ -1,0 +1,13 @@
+@import '../index.scss';
+.AddRequirement {
+
+  background-color: red;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 30px;
+  height: 600px;
+
+  @include respond(phone) {
+    width: 320px;
+  }
+}
