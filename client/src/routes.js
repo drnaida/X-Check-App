@@ -24,9 +24,9 @@ export const useRoutes = isAuthenticated => {
         <Route path="/create-tasks">
           <CreateTaskPage />
         </Route>
-        <Route path="/add-requirement">
+        /*<Route path="/add-requirement">
           <AddRequirement />
-        </Route>
+        </Route>*/
         <Redirect to="/home" />
       </Switch>
     );
