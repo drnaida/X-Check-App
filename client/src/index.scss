@@ -24,3 +24,26 @@ code {
         @media only screen and (min-width: 112.5em) { @content };    //1800
     }
 }
+/* COLORS */
+$color-green-light: #b7eb8f;
+$color-green: #52c41a;
+$color-white: #fff;
+$color-black: 000;
+$color-gray: #f0f2f5;
+$color-gray-light-1: #f0f0f0;
+$color-gray-light-2: #d9d9d9;
+$color-blud: #1890ff;
+$color-red: #f5222d;
+$color-red-light: #ffa39e;
+
+/* BORDERS */
+$border-default-width: 2px;
+$border-default-style: solid;
+$border-radius-default: 2px;
+
+/* FONT SIZES */
+$font-size-default: 14px;
+$font-size-small: 12px;
+$font-size-super-small: 11px;
+$font-size-big: 16px;
+$font-size-super-big: 17px;
