@@ -17,7 +17,7 @@ const AddRequirement = () => {
   };
 
   const addRequirementToList = event => {
-    console.log(requirements);
+    console.log('Add');
   }
 
   return (
@@ -27,14 +27,14 @@ const AddRequirement = () => {
         <label htmlFor="title" className="AddRequirement__container--label">Title: </label>
         <input id="title" name="title" placeholder="X-Check app" className="AddRequirement__container--input" value={requirement.title} onChange={changeRequirement}/>
         <label htmlFor="description" className="AddRequirement__container--label">Description: </label>
-        <textarea id="description"placeholder="Super interesting task." name="description" className="AddRequirement__container--textarea" onChange={changeRequirement}/>
+        <textarea id="description" placeholder="Super interesting task." name="description" className="AddRequirement__container--textarea" value={requirement.description} onChange={changeRequirement}/>
         <label htmlFor="minScore" className="AddRequirement__container--label">Minimum Score: </label>
-        <input type="number" id="minScore" placeholder="0" name="minScore" className="AddRequirement__container--input" onChange={changeRequirement}/>
+        <input type="number" id="minScore" placeholder="0" name="minScore" className="AddRequirement__container--input" value={requirement.minScore} onChange={changeRequirement}/>
         <label htmlFor="maxScore" className="AddRequirement__container--label">Maximum Score: </label>
-        <input id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" onChange={changeRequirement}/>
+        <input id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" value={requirement.maxScore} onChange={changeRequirement}/>
         <label htmlFor="onlyForMentors" className="AddRequirement__container--label">Only for mentors: </label>
-        <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" onChange={changeRequirementCheckbox}/>
-        <label htmlFor="scopeType" className="AddRequirement__container--label">Scope: </label>
+        <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" value={requirement.onlyForMentors} onChange={changeRequirementCheckbox}/>
+        <label htmlFor="scopeType" className="AddRequirement__container--label" value={requirement.scopeType}>Scope: </label>
         <select id="scopeType" name="scopeType" onChange={changeRequirement}>
           <option>Basic Scope</option>
           <option>Advanced Scope</option>
