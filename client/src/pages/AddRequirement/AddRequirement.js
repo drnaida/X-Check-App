@@ -28,7 +28,7 @@ const AddRequirement = () => {
         <label htmlFor="onlyForMentors" className="AddRequirement__container--label">Only for mentors: </label>
         <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" onChange={changeRequirement}/>
       </div>
-      <button className="button" onClick={addRequirementToList}>Add requirement</button>
+      <button className="AddRequirement__button" onClick={addRequirementToList}>Add requirement</button>
     </div>
   );
 };

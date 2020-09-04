@@ -12,6 +12,14 @@
   margin-bottom: 10px;
   justify-content: space-between;
 
+  &__heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(0,0,0,.45);
+    margin: 0;
+    margin-bottom: 30px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -43,11 +51,31 @@
     }
 
     &--textarea {
+      max-width: 96%;
       width: 100%;
+      resize: none;
     }
 
     &--label {
       margin-bottom: 8px;
+      font-size: $font-size-default;
+      color: rgba(0,0,0,0.85);
+    }
+  }
+
+  &__button {
+    background-color: $color-blud;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+    color: $color-white;
+    padding: 6.5px 15px;
+    box-sizing: border-box;
+    font-size: $font-size-big;
+
+    &:hover {
+      background-color: rgba(24, 144, 255, 0.7);
     }
   }
 
