@@ -9,6 +9,16 @@ const AddRequirement = () => {
     setRequirement({ ...requirement, [event.target.name]: event.target.value });
     console.log(requirement);
   };
+
+  const changeRequirementCheckbox = event => {
+    if (event.target.checked) {
+      setRequirement({ ...requirement, [event.target.name]: true });
+    } else {
+      setRequirement({ ...requirement, [event.target.name]: false });
+    }
+    console.log(requirement);
+  };
+
   const addRequirementToList = event => {
     setRequirements({...requirements, requirement});
     console.log(requirements);
@@ -26,7 +36,7 @@ const AddRequirement = () => {
         <label htmlFor="maxScore" className="AddRequirement__container--label">Maximum Score: </label>
         <input id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" onChange={changeRequirement}/>
         <label htmlFor="onlyForMentors" className="AddRequirement__container--label">Only for mentors: </label>
-        <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" onChange={changeRequirement}/>
+        <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" onChange={changeRequirementCheckbox}/>
       </div>
       <button className="AddRequirement__button" onClick={addRequirementToList}>Add requirement</button>
     </div>
