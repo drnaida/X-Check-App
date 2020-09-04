@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AddRequirement.scss';
 import '../../index.scss';
 const AddRequirement = () => {
-  const [requirement, setRequirement] = useState({ title: '', description: '', minScore: 0, maxScore: 0, onlyForMentors: false,  scopeType: ''});
+  const [requirement, setRequirement] = useState({ title: '', description: '', minScore: 0, maxScore: 0, onlyForMentors: false,  scopeType: 'Basic Scope'});
   const [requirements, setRequirements] = useState([]);
 
   const changeRequirement = event => {
@@ -37,6 +37,12 @@ const AddRequirement = () => {
         <input id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" onChange={changeRequirement}/>
         <label htmlFor="onlyForMentors" className="AddRequirement__container--label">Only for mentors: </label>
         <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" onChange={changeRequirementCheckbox}/>
+        <label htmlFor="scopeType" className="AddRequirement__container--label">Scope: </label>
+        <select id="scopeType" name="scopeType" onChange={changeRequirement}>
+          <option>Basic Scope</option>
+          <option>Advanced Scope</option>
+          <option>Extra Scope</option>
+        </select>
       </div>
       <button className="AddRequirement__button" onClick={addRequirementToList}>Add requirement</button>
     </div>
