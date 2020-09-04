@@ -3,11 +3,9 @@ import './AddRequirement.scss';
 import '../../index.scss';
 const AddRequirement = () => {
   const [requirement, setRequirement] = useState({ title: '', description: '', minScore: 0, maxScore: 0, onlyForMentors: false,  scopeType: 'Basic Scope'});
-  const [requirements, setRequirements] = useState([]);
 
   const changeRequirement = event => {
     setRequirement({ ...requirement, [event.target.name]: event.target.value });
-    console.log(requirement);
   };
 
   const changeRequirementCheckbox = event => {
@@ -16,19 +14,18 @@ const AddRequirement = () => {
     } else {
       setRequirement({ ...requirement, [event.target.name]: false });
     }
-    console.log(requirement);
   };
 
   const addRequirementToList = event => {
-    setRequirements({...requirements, requirement});
     console.log(requirements);
   }
-  return(
+
+  return (
     <div className="AddRequirement">
       <h1 className="AddRequirement__heading">Create new requirement</h1>
       <div className="AddRequirement__container">
         <label htmlFor="title" className="AddRequirement__container--label">Title: </label>
-        <input id="title" name="title" placeholder="X-Check app" className="AddRequirement__container--input" onChange={changeRequirement}/>
+        <input id="title" name="title" placeholder="X-Check app" className="AddRequirement__container--input" value={requirement.title} onChange={changeRequirement}/>
         <label htmlFor="description" className="AddRequirement__container--label">Description: </label>
         <textarea id="description"placeholder="Super interesting task." name="description" className="AddRequirement__container--textarea" onChange={changeRequirement}/>
         <label htmlFor="minScore" className="AddRequirement__container--label">Minimum Score: </label>
