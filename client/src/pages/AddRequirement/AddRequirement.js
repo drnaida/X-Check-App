@@ -31,7 +31,7 @@ const AddRequirement = () => {
         <label htmlFor="minScore" className="AddRequirement__container--label">Minimum Score: </label>
         <input type="number" id="minScore" placeholder="0" name="minScore" className="AddRequirement__container--input" value={requirement.minScore} onChange={changeRequirement}/>
         <label htmlFor="maxScore" className="AddRequirement__container--label">Maximum Score: </label>
-        <input id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" value={requirement.maxScore} onChange={changeRequirement}/>
+        <input type="number" id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" value={requirement.maxScore} onChange={changeRequirement}/>
         <label htmlFor="onlyForMentors" className="AddRequirement__container--label">Only for mentors: </label>
         <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" value={requirement.onlyForMentors} onChange={changeRequirementCheckbox}/>
         <label htmlFor="scopeType" className="AddRequirement__container--label" value={requirement.scopeType}>Scope: </label>
