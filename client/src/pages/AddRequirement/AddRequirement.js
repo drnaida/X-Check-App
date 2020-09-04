@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddRequirement.scss';
 import '../../index.scss';
+
 const AddRequirement = () => {
   const [requirement, setRequirement] = useState({ title: '', description: '', minScore: 0, maxScore: 0, onlyForMentors: false,  scopeType: 'Basic Scope'});
 
