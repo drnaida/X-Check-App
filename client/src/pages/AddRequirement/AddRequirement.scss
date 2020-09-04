@@ -18,6 +18,37 @@
     align-items: flex-start;
     width: 100%;
     height: 100%;
+
+    &--input,
+    &--textarea {
+      height: 32px;
+      padding: 4px 11px;
+      box-sizing: content-box;
+      outline: none;
+      background-color: $color-white;
+      color: rgba(0, 0, 0, 0.65);
+      font-size: $font-size-default;
+      border: $border-default-width $border-default-style $color-gray-light-2;
+      border-radius: $border-radius-default;
+      margin-bottom: 20px;
+
+      &::placeholder {
+        font-size: $font-size-default;
+        color: $color-gray-light-2;
+      }
+    }
+
+    &--input {
+
+    }
+
+    &--textarea {
+      width: 100%;
+    }
+
+    &--label {
+      margin-bottom: 8px;
+    }
   }
 
   @include respond(phone) {
