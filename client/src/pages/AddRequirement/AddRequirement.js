@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import './AddRequirement.scss';
 import '../../index.scss';
-// This is ModalWindow component and AntDesign
 import ModalWindow from '../../components/ModalFindow/ModalWindow';
 import 'antd/dist/antd.css';
 
 const AddRequirement = () => {
-  const [requirement, setRequirement] = useState({ title: '', description: '', minScore: 0, maxScore: 0, onlyForMentors: false,  scopeType: 'Basic Scope', visibleModalWindow: false });
+  const [requirement, setRequirement] = useState(
+    { title: '',
+      description: '',
+      minScore: 0,
+      maxScore: 0,
+      onlyForMentors: false,
+      scopeType: 'Basic Scope',
+      visibleModalWindow: false,
+    });
 
   const changeRequirement = event => {
     setRequirement({ ...requirement, [event.target.name]: event.target.value });
@@ -20,16 +27,14 @@ const AddRequirement = () => {
     }
   };
 
-  // function for closing modal window
-  const closeModalWindow = () => setRequirement({ visibleModalWindow: false });
+  const closeModalWindow = () => setRequirement({ ...requirement, visibleModalWindow: false });
 
   const saveRequirement = () => {
     closeModalWindow();
-    console.log('Hooray! We did it!');
   }
 
   const addRequirementToList = event => {
-    setRequirement({ visibleModalWindow: true })
+    setRequirement({ ...requirement, visibleModalWindow: true })
   }
 
   return (
@@ -54,7 +59,6 @@ const AddRequirement = () => {
         </select>
       </div>
       <button className="AddRequirement__button" onClick={addRequirementToList}>Add requirement</button>
-      {/* ModalWindow */}
       <ModalWindow 
         visible={requirement.visibleModalWindow}
         handlerOkButton={saveRequirement}
