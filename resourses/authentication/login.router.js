@@ -40,7 +40,7 @@ router.post('/register', registerBodyValidation(), catchErrors(async (req, res) 
     }
     const candidate = await loginService.checkUser(req.body);
     if (candidate) {
-      return res.status(400).json({ message: 'This githubId already exists' })
+      return res.status(BAD_REQUEST).json({ message: 'This githubId already exists' })
     } else {
       const newUser = new User(req.body);
       await loginService.addUser(newUser);
