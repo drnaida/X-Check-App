@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './AddRequirement.scss';
 import '../../index.scss';
-import ModalWindow from '../../components/ModalFindow/ModalWindow';
-import 'antd/dist/antd.css';
+import ModalWindow from '../../components/ModalWindow/ModalWindow';
 
 const AddRequirement = () => {
   const [requirement, setRequirement] = useState(
