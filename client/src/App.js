@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
-import { useRoutes } from './routes';
+import {useRoutes} from './routes';
 import rootReducer from './store/reducers';
+import {useAuth} from "./hooks/auth.hook";
+import {AuthContext} from "./context/AuthContext";
 // IMPORT FUNCTION OF GETTING DATA FROM DATABASE //
 // import { getTasks } from "./services/tasksService";
 
@@ -16,7 +18,9 @@ const store = createStore(
 );
 
 function App() {
-  const routes = useRoutes(false);
+  const {token, githubId, roles, login, logout} = useAuth();
+  const isAuthenticated = !!token;
+  const routes = useRoutes(isAuthenticated);
   // 'useDispatch' SHOULD BE IMPORTED FROM 'react-redux' //
   //--------------------------------
   // const dispatch = useDispatch();
@@ -34,9 +38,11 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Router>
-        <div>{routes}</div>
-      </Router>
+      <AuthContext.Provider value={{token, githubId, roles, login, logout, isAuthenticated}}>
+        <Router>
+          <div>{routes}</div>
+        </Router>
+      </AuthContext.Provider>
     </Provider>
   );
 }
