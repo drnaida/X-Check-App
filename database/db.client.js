@@ -13,7 +13,6 @@ module.exports = callback => {
   db.once('open', () => {
     User.create({ githubId: 'admin', password: 'admin', roles: ['course-manager'] });
     console.log('We are connected');
-    db.dropDatabase();
     callback();
   });
 };

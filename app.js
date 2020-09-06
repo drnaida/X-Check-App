@@ -3,15 +3,19 @@ const app = express();
 const { NOT_FOUND, getStatusText } = require('http-status-codes');
 
 const { requestLoggerMiddleware } = require('./loggers/logger');
+const checkToken = require('./resourses/authentication/jwt/checkToken');
 const { handleError, handleInternalServerError, ErrorHandler } = require('./helpers/errorHandler');
 
 const userRouter = require('./resourses/users/user.router');
+const loginRouter = require('./resourses/authentication/login.router');
 
 app.use(express.json({extended: true}));
 
 app.use(requestLoggerMiddleware);
 
-app.use('/users', userRouter);
+app.use('/auth', loginRouter);
+
+app.use('/users', checkToken, userRouter);
 
 app.use('/*', async (req, res, next) => {
   await res.status(NOT_FOUND).json({ message: getStatusText(NOT_FOUND) });

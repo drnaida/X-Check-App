@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
-import AuthPage from './pages/AuthPage';
+import AuthPage from './pages/AuthPage/AuthPage';
 import HomePage from './pages/HomePage';
 import TasksPage from './pages/TasksPage';
 import CreateTaskPage from './pages/CreateTaskPage';
