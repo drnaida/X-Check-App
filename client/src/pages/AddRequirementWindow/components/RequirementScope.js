@@ -3,10 +3,10 @@ import { Select } from 'antd';
 
 const Option = Select.Option;
 
-const RequirementScope = (scopeType, changeHandleFunction) => {
+const RequirementScope = (category, changeHandleFunction) => {
   return (
     <div>
-      <label htmlFor="scopeType" value={scopeType}>Scope: </label>
+      <label htmlFor="scopeType" value={category}>Scope: </label>
       <Select id="scopeType" name="scopeType" onChange={changeHandleFunction}>
         <Option value="Basic Scope">Basic Scope</Option>
         <Option value="Advanced Scope">Advanced Scope</Option>

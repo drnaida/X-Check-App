@@ -9,16 +9,21 @@ import AddNewSubRequirement from './components/AddNewSubRequirement';
 
 const AddRequirementWindow = () => {
   const [requirement, setRequirement] = useState(
-    { title: '',
-      description: '',
-      minScore: 0,
-      maxScore: 0,
-      onlyForMentors: false,
-      scopeType: 'Basic Scope',
-      visibleModalWindow: false,
+    { visibleModalWindow: false,
+      id: '',
+      title: '',
+      category: 'Basic Scope',
+      items: [
+        {
+          description: '',
+          maxScore: 0,
+          onlyForMentors: false,
+        }
+      ]
     });
 
   const changeRequirement = event => {
+    console.log('Change');
     setRequirement({ ...requirement, [event.target.name]: event.target.value });
   };
 
@@ -51,7 +56,7 @@ const AddRequirementWindow = () => {
         handlerCancelButton={closeModalWindow}
       >
         <RequirementTitle title={requirement.title} changeHandleFunction={changeRequirement} />
-        <RequirementScope title={requirement.scopeType} changeHandleFunction={changeRequirement} />
+        <RequirementScope category={requirement.category} changeHandleFunction={changeRequirement} />
         <h1>Подтребование</h1>
         <SubRequirementList />
         <AddNewSubRequirement description={requirement.desciption} maxScore={requirement.maxScore} onlyForMentors={requirement.onlyForMentors} />
