@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './AddRequirementWindow.scss';
 import '../../index.scss';
-import { Input } from 'antd';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
+import RequirementTitle from './components/RequirementTitle';
 
 const AddRequirementWindow = () => {
   const [requirement, setRequirement] = useState(
@@ -47,10 +47,8 @@ const AddRequirementWindow = () => {
         handlerOkButton={saveRequirement}
         handlerCancelButton={closeModalWindow}
       >
-
         <div className="AddRequirement__container">
-          <label htmlFor="title" className="AddRequirement__container--label">Title: </label>
-          <input id="title" name="title" placeholder="X-Check app" className="AddRequirement__container--input" value={requirement.title} onChange={changeRequirement}/>
+          <RequirementTitle title={requirement.title} changeHandleFunction={changeRequirement} />
           <label htmlFor="description" className="AddRequirement__container--label">Description: </label>
           <textarea id="description" placeholder="Super interesting task." name="description" className="AddRequirement__container--textarea" value={requirement.description} onChange={changeRequirement}/>
           <label htmlFor="minScore" className="AddRequirement__container--label">Minimum Score: </label>
