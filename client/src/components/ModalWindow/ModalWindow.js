@@ -4,6 +4,9 @@ import './ModalWindow.scss';
 
 const ModalWindow = (props) => {
   const {title, visible, handlerOkButton, handlerCancelButton, children} = props;
+  const modalWindowSize = {
+    maxWidth: '1728px',
+  };
   return (
     <Modal
       title={title}
@@ -12,6 +15,8 @@ const ModalWindow = (props) => {
       okText="Save"
       onOk={handlerOkButton}
       onCancel={handlerCancelButton}
+      style={modalWindowSize}
+      width='90%'
     >
       { children }
     </Modal>
