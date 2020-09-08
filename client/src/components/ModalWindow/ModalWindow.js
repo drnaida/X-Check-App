@@ -3,10 +3,10 @@ import { Modal } from 'antd';
 import './ModalWindow.scss';
 
 const ModalWindow = (props) => {
-  const {visible, handlerOkButton, handlerCancelButton, children} = props;
+  const {title, visible, handlerOkButton, handlerCancelButton, children} = props;
   return (
     <Modal
-      title="Adding requirement"
+      title={title}
       visible={visible}
       centered
       okText="Save"
