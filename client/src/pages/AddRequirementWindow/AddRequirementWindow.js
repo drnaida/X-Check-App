@@ -5,6 +5,7 @@ import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import RequirementTitle from './components/RequirementTitle';
 import RequirementScope from './components/RequirementScope';
 import SubRequirementList from './components/SubRequirementList';
+import AddNewSubRequirement from './components/AddNewSubRequirement';
 
 const AddRequirementWindow = () => {
   const [requirement, setRequirement] = useState(
@@ -49,16 +50,12 @@ const AddRequirementWindow = () => {
         handlerOkButton={saveRequirement}
         handlerCancelButton={closeModalWindow}
       >
-        <div className="AddRequirement__container">
-          <RequirementTitle title={requirement.title} changeHandleFunction={changeRequirement} />
-          <RequirementScope title={requirement.scopeType} changeHandleFunction={changeRequirement} />
-          <h1>Подтребование</h1>
-          <SubRequirementList />
-          <textarea id="description" placeholder="Super interesting task." name="description" className="AddRequirement__container--textarea" value={requirement.description} onChange={changeRequirement}/>
-          <input type="number" id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" value={requirement.maxScore} onChange={changeRequirement}/>
-          <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" value={requirement.onlyForMentors} onChange={changeRequirementCheckbox}/>
-        </div>
-        </ModalWindow>
+        <RequirementTitle title={requirement.title} changeHandleFunction={changeRequirement} />
+        <RequirementScope title={requirement.scopeType} changeHandleFunction={changeRequirement} />
+        <h1>Подтребование</h1>
+        <SubRequirementList />
+        <AddNewSubRequirement description={requirement.desciption} maxScore={requirement.maxScore} onlyForMentors={requirement.onlyForMentors} />
+      </ModalWindow>
     </div>
   );
 };
