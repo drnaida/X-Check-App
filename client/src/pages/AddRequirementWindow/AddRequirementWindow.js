@@ -4,6 +4,7 @@ import '../../index.scss';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import RequirementTitle from './components/RequirementTitle';
 import RequirementScope from './components/RequirementScope';
+import SubRequirementList from './components/SubRequirementList';
 
 const AddRequirementWindow = () => {
   const [requirement, setRequirement] = useState(
@@ -51,13 +52,10 @@ const AddRequirementWindow = () => {
         <div className="AddRequirement__container">
           <RequirementTitle title={requirement.title} changeHandleFunction={changeRequirement} />
           <RequirementScope title={requirement.scopeType} changeHandleFunction={changeRequirement} />
-          <label htmlFor="description" className="AddRequirement__container--label">Description: </label>
+          <h1>Подтребование</h1>
+          <SubRequirementList />
           <textarea id="description" placeholder="Super interesting task." name="description" className="AddRequirement__container--textarea" value={requirement.description} onChange={changeRequirement}/>
-          <label htmlFor="minScore" className="AddRequirement__container--label">Minimum Score: </label>
-          <input type="number" id="minScore" placeholder="0" name="minScore" className="AddRequirement__container--input" value={requirement.minScore} onChange={changeRequirement}/>
-          <label htmlFor="maxScore" className="AddRequirement__container--label">Maximum Score: </label>
           <input type="number" id="maxScore" name="maxScore" placeholder="10" className="AddRequirement__container--input" value={requirement.maxScore} onChange={changeRequirement}/>
-          <label htmlFor="onlyForMentors" className="AddRequirement__container--label">Only for mentors: </label>
           <input type="checkbox" id="onlyForMentors" className="AddRequirement__container--input" name="onlyForMentors" value={requirement.onlyForMentors} onChange={changeRequirementCheckbox}/>
         </div>
         </ModalWindow>
