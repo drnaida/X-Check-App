@@ -3,24 +3,28 @@ const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
   id: String,
-  minScore: Number,
-  maxScore: Number,
-  category: String,
   title: String,
-  description: String
+  category: String,
+  items: [{
+    id: String,
+    description: String,
+    minScore: Number,
+    maxScore: Number,
+    onlyForMentors: Boolean
+  }]
 }, { _id: false })
 
 const taskSchema = new mongoose.Schema({
   id: String,
+  title: String,
   author: String,
-  state: String,
-  categoriesOrder: [String],
-  items: [itemSchema]
+  categories: [String],
+  requirements: [itemSchema]
 });
 
 taskSchema.statics.toResponse = task => {
-  const {id, author, state, categoriesOrder, items} = task;
-  return {id, author, state, categoriesOrder, items}
+  const {id, title, author, categories, requirements} = task;
+  return {id, title, author, categories, requirements}
 };
 
 const Task = mongoose.model('Task', taskSchema);
