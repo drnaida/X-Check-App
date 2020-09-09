@@ -8,10 +8,18 @@ const HeaderComponent = () => {
     <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1">Tasks</Menu.Item>
-        <Menu.Item key="2">Review Requests</Menu.Item>
-        <Menu.Item key="3">Reviews</Menu.Item>
-        <Menu.Item key="4">Cross-check sessions</Menu.Item>
+        <Menu.Item key="1">
+          <a href="/tasks">Tasks</a>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <a href="/review-requests">Review Requests</a>
+        </Menu.Item>
+        <Menu.Item key="3">
+          <a href="/reviews">Reviews</a>
+        </Menu.Item>
+        <Menu.Item key="4">
+          <a href="/cross-check-sessions">Cross-check sessions</a>
+        </Menu.Item>
       </Menu>
     </Header>
   );
