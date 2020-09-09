@@ -298,3 +298,9 @@
 {"url":"/auth/register","method":"POST","query":{},"body":{"githubId":"sasa","password":"12345","roles":["student"]},"level":"info","message":"    Request logging"}
 {"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"sasa","password":"12345","roles":["student"]},"level":"info","message":"    Request logging"}
 {"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"rss333","password":"1234234"},"level":"info","message":"    Request logging"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"info","message":"    Request logging"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"error","message":"   Request Error"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"info","message":"    Request logging"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
+{"url":"/auth/register","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@","roles":["supervisor"]},"level":"info","message":"    Request logging"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@","roles":["supervisor"]},"level":"info","message":"    Request logging"}

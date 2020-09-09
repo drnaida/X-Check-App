@@ -101,3 +101,5 @@
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"rss333","password":"1234234xzczxc"},"level":"error","message":"   Request Error"}
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"rss333","password":"1234234zxczxc"},"level":"error","message":"   Request Error"}
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"pavel","password":"1234"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
