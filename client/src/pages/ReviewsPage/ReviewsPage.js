@@ -9,7 +9,7 @@ const { Content } = Layout;
 const ReviewsPage = () => {
   return (
     <Layout>
-      <HeaderComponent />
+      <HeaderComponent pageName="Reviews" activeMenuItem="['3']" />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>Reviews page</Content>
     </Layout>
   );

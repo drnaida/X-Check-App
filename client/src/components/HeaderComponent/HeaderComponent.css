@@ -1,0 +1,9 @@
+.HeaderComponent-logo {
+  background-image: url('../../assets/imgs/rsschool-logo.png');
+  width: 55px;
+  height: 64px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 15px;
+}
