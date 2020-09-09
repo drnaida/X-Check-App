@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import TasksPage from './pages/TasksPage';
 import CreateTaskPage from './pages/CreateTaskPage';
 import ReviewRequestsPage from './pages/ReviewRequestsPage';
+import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
+import CrossCheckSessionsPage from './pages/CrossCheckSessionsPage/CrossCheckSessionsPage';
 /* import AddRequirement from './pages/AddRequirement'; */
 /*
         <Route path="/add-requirement">
@@ -28,6 +30,15 @@ export const useRoutes = isAuthenticated => {
         </Route>
         <Route path="/create-tasks">
           <CreateTaskPage />
+        </Route>
+        <Route path="/reviews">
+          <ReviewsPage />
+        </Route>
+        <Route path="/reviews">
+          <ReviewsPage />
+        </Route>
+        <Route path="/cross-check-sessions">
+          <CrossCheckSessionsPage />
         </Route>
         <Redirect to="/home" />
       </Switch>
