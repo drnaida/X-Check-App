@@ -7,8 +7,7 @@ const itemSchema = new mongoose.Schema({
   items: [{
     id: String,
     description: String,
-    minScore: Number,
-    maxScore: Number,
+    score: Number,
     onlyForMentors: Boolean
   }]
 }, { _id: false })
