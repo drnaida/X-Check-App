@@ -1,17 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
-import AuthPage from './pages/AuthPage/AuthPage';
-import HomePage from './pages/HomePage';
-import TasksPage from './pages/TasksPage';
-import CreateTaskPage from './pages/CreateTaskPage';
-import ReviewRequestsPage from './pages/ReviewRequestsPage';
-/* import AddRequirement from './pages/AddRequirement'; */
-/*
-        <Route path="/add-requirement">
-          <AddRequirement />
-        </Route>
-        */
+import { AuthPage, HomePage, TasksPage, CreateTaskPage, ReviewRequestsPage } from './pages';
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {

@@ -5,7 +5,7 @@ import React from 'react';
 // import { getAllTasks } from "../store/selectors/tasks";
 // import { deleteTask } from "../store/actions/tasks";
 
-const TasksPage = () => {
+export const TasksPage = () => {
   // USING TASKS WITH REDUX //
   //------------------------
   // const dispatch = useDispatch();
@@ -17,5 +17,3 @@ const TasksPage = () => {
 
   return <div>Tasks page</div>;
 };
-
-export default TasksPage;
