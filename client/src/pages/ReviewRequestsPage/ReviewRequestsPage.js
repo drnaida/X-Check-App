@@ -15,28 +15,28 @@ export const ReviewRequestsPage = () => {
     {
       key: '1',
       taskName: 'Mike',
-      developer: 'Mike',
+      developer: 'AMike',
       status: 'Draft',
       actionType: 'Check'
     },
     {
       key: '2',
       taskName: 'John',
-      developer: 42,
+      developer: 'DJohn',
       status: 'Published',
       actionType: 'Edit'
     },
     {
       key: '3',
       taskName: 'John',
-      developer: 42,
+      developer: 'BTom',
       status: 'Completed',
       actionType: 'Edit'
     },
     {
       key: '4',
       taskName: 'John',
-      developer: 42,
+      developer: 'CNick',
       status: 'Draft',
       actionType: 'Check'
     }
@@ -76,16 +76,30 @@ export const ReviewRequestsPage = () => {
     handlerCancelButtonModalWindow();
   };
 
+  const sortStrings = (a, b, field) => {
+    if (a[field] > b[field]) {
+      return 1;
+    }
+    if (a[field] < b[field]) {
+      return -1;
+    }
+    return 0;
+  };
+
   const columns = [
     {
       title: 'Task name',
       dataIndex: 'taskName',
-      key: 'taskName'
+      key: 'taskName',
+      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => sortStrings(a, b, 'taskName')
     },
     {
       title: 'Developer',
       dataIndex: 'developer',
-      key: 'developer'
+      key: 'developer',
+      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => sortStrings(a, b, 'developer')
     },
     {
       title: 'Status',
