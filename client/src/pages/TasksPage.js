@@ -12,7 +12,7 @@ import FooterComponent from '../components/FooterComponent/FooterComponent';
 
 const { Content } = Layout;
 
-const TasksPage = () => {
+export const TasksPage = () => {
   // USING TASKS WITH REDUX //
   //------------------------
   // const dispatch = useDispatch();
@@ -30,5 +30,3 @@ const TasksPage = () => {
     </Layout>
   );
 };
-
-export default TasksPage;

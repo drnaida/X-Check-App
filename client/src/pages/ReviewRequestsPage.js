@@ -16,5 +16,3 @@ const ReviewRequestsPage = () => {
     </Layout>
   );
 };
-
-export default ReviewRequestsPage;

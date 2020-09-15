@@ -18,9 +18,9 @@ const registerBodyValidation = () => {
 const taskBodyValidation = () => {
   return [
     check('author', 'author is not passed').exists(),
-    check('state', 'state is not passed').exists(),
-    check('categoriesOrder', 'categoriesOrder is not passed').exists(),
-    check('items', 'items is not passed').exists()
+    check('title', 'title is not passed').exists(),
+    check('categories', 'categories is not passed').exists(),
+    check('requirements', 'requirements is not passed').exists()
   ]
 }
 
