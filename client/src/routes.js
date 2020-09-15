@@ -16,7 +16,10 @@ export const useRoutes = isAuthenticated => {
         <Route path="/review-requests">
           <ReviewRequestsPage />
         </Route>
-        <Route path="/create-tasks">
+        <Route exact path="/create-task">
+          <CreateTaskPage />
+        </Route>
+        <Route path="/create-task/:id">
           <CreateTaskPage />
         </Route>
         <Redirect to="/home" />
