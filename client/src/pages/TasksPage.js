@@ -8,6 +8,7 @@ import React from 'react';
 import { Layout } from 'antd';
 
 import HeaderComponent from '../components/HeaderComponent/HeaderComponent';
+import FooterComponent from '../components/FooterComponent/FooterComponent';
 
 const { Content } = Layout;
 
@@ -25,6 +26,7 @@ const TasksPage = () => {
     <Layout>
       <HeaderComponent activeMenuItem="['1']" />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>Tasks page</Content>
+      <FooterComponent />
     </Layout>
   );
 };
