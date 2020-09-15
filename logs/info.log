@@ -314,3 +314,13 @@
 {"statusCode":500,"statusText":"Internal Server Error","url":"/CrossCheckSessionsPage.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
 {"url":"/src/index.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
 {"statusCode":500,"statusText":"Internal Server Error","url":"/src/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"info","message":"    Request logging"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"info","message":"    Request logging"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"info","message":"    Request logging"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"error","message":"   Request Error"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"info","message":"    Request logging"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"error","message":"   Request Error"}
+{"url":"/auth/register","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@","roles":["course_manager"]},"level":"info","message":"    Request logging"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@","roles":["course_manager"]},"level":"info","message":"    Request logging"}

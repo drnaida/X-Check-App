@@ -108,3 +108,7 @@
 {"statusCode":500,"statusText":"Internal Server Error","url":"/App.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
 {"statusCode":500,"statusText":"Internal Server Error","url":"/CrossCheckSessionsPage.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
 {"statusCode":500,"statusText":"Internal Server Error","url":"/src/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"B0$t0N"},"level":"error","message":"   Request Error"}

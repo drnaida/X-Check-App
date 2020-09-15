@@ -6,14 +6,8 @@ import HomePage from './pages/HomePage';
 import TasksPage from './pages/TasksPage';
 import CreateTaskPage from './pages/CreateTaskPage';
 import ReviewRequestsPage from './pages/ReviewRequestsPage';
-import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
-import CrossCheckSessionsPage from './pages/CrossCheckSessionsPage/CrossCheckSessionsPage';
-/* import AddRequirement from './pages/AddRequirement'; */
-/*
-        <Route path="/add-requirement">
-          <AddRequirement />
-        </Route>
-        */
+import ReviewsPage from './pages/ReviewsPage';
+import CrossCheckSessionsPage from './pages/CrossCheckSessionsPage';
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
