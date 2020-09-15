@@ -1,12 +1,16 @@
 /* eslint-disable react/display-name */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 
 import { ModalWindow } from '../../components/ModalWindow';
 
+import { SelectingTask } from './component/SelectingTask';
+import { CheckingYourself } from './component/CheckingYourself';
+
 export const ReviewRequestsPage = () => {
+  let formHandlerLink;
+
   const [dataSource, setActionType] = useState([
     {
       key: '1',
@@ -38,6 +42,7 @@ export const ReviewRequestsPage = () => {
     }
   ]);
   const [visebleModalWindow, setVisibleModalWindow] = useState(false);
+  const [step, setStep] = useState(1);
 
   const handlerClickAction = index => {
     const state = [...dataSource];
@@ -46,11 +51,29 @@ export const ReviewRequestsPage = () => {
     setActionType(state);
   };
 
-  const handlerOkButtonModalWindow = () => {
-    setVisibleModalWindow(false);
-  };
   const handlerCancelButtonModalWindow = () => {
     setVisibleModalWindow(false);
+    setStep(1);
+  };
+
+  const handlerNextButtonModalWindow = () => {
+    formHandlerLink
+      .validateFields()
+      .then(values => {
+        console.log(values);
+        setStep(step + 1);
+      })
+      .catch(info => {
+        console.log('Validate Failed:', info);
+      });
+  };
+
+  const handlerSaveNotPublishedButtonModalWindow = () => {
+    handlerCancelButtonModalWindow();
+  };
+
+  const handlerSavePublishedButtonModalWindow = () => {
+    handlerCancelButtonModalWindow();
   };
 
   const columns = [
@@ -101,14 +124,45 @@ export const ReviewRequestsPage = () => {
     }
   ];
 
+  const buttonsStepOne = [
+    <Button key="1" onClick={handlerCancelButtonModalWindow}>
+      Cancel
+    </Button>,
+    <Button key="2" type="primary" onClick={handlerNextButtonModalWindow}>
+      Next
+    </Button>
+  ];
+
+  const buttonsStepTwo = [
+    <Button key="1" onClick={handlerCancelButtonModalWindow}>
+      Cancel
+    </Button>,
+    <Button key="2" type="primary" onClick={handlerSaveNotPublishedButtonModalWindow}>
+      Save and not published
+    </Button>,
+    <Button key="3" type="primary" onClick={handlerSavePublishedButtonModalWindow}>
+      Save and published
+    </Button>
+  ];
+
+  const getFormHendler = formHandler => {
+    formHandlerLink = formHandler;
+  };
+
   return (
     <>
       <ModalWindow
         title="Creating new rewiew request"
         visible={visebleModalWindow}
-        handlerOkButton={handlerOkButtonModalWindow}
+        buttons={step === 1 ? buttonsStepOne : buttonsStepTwo}
         handlerCancelButton={handlerCancelButtonModalWindow}
-      />
+      >
+        {step === 1 ? (
+          <SelectingTask getFormHendler={getFormHendler} />
+        ) : (
+          <CheckingYourself getFormHendler={getFormHendler} />
+        )}
+      </ModalWindow>
       <Button
         type="primary"
         onClick={() => setVisibleModalWindow(true)}

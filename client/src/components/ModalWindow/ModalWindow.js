@@ -21,8 +21,6 @@ export const ModalWindow = props => {
         centered
         width="90%"
         style={{ height }}
-        okText="Save"
-        onOk={handlerOkButton}
         onCancel={handlerCancelButton}
         footer={buttons}
       >
