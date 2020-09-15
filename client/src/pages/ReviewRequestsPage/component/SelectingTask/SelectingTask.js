@@ -38,9 +38,9 @@ export const SelectingTask = ({ getFormHendler }) => {
             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
           }
         >
-          <Option value="task1">Task #1</Option>
-          <Option value="task2">Task #2</Option>
-          <Option value="task3">Task #3</Option>
+          <Option value="Task #1">Task #1</Option>
+          <Option value="Task #2">Task #2</Option>
+          <Option value="Task #3">Task #3</Option>
         </Select>
       </Form.Item>
       <Form.Item
