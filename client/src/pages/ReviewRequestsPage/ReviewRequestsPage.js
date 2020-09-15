@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { Button, Table } from 'antd';
+import { Button, Table, Input, Space } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import Highlighter from 'react-highlight-words';
 
 import { ModalWindow } from '../../components/ModalWindow';
 
@@ -10,32 +13,33 @@ import { CheckingYourself } from './component/CheckingYourself';
 
 export const ReviewRequestsPage = () => {
   let formHandlerLink;
+  let searchInput;
 
   const [dataSource, setActionType] = useState([
     {
       key: '1',
-      taskName: 'Mike',
+      task: 'qMike',
       developer: 'AMike',
       status: 'Draft',
       actionType: 'Check'
     },
     {
       key: '2',
-      taskName: 'John',
+      task: 'Nick',
       developer: 'DJohn',
       status: 'Published',
       actionType: 'Edit'
     },
     {
       key: '3',
-      taskName: 'John',
+      task: 'Jeremy',
       developer: 'BTom',
       status: 'Completed',
       actionType: 'Edit'
     },
     {
       key: '4',
-      taskName: 'John',
+      task: 'Neo',
       developer: 'CNick',
       status: 'Draft',
       actionType: 'Check'
@@ -43,20 +47,22 @@ export const ReviewRequestsPage = () => {
   ]);
   const [visebleModalWindow, setVisibleModalWindow] = useState(false);
   const [step, setStep] = useState(1);
+  const [searchText, setSearchText] = useState('');
+  const [searchedColumn, setSearchedColumn] = useState('');
 
-  const handlerClickAction = index => {
+  const handleClickAction = index => {
     const state = [...dataSource];
     const { actionType } = state[index];
     state[index].actionType = actionType === 'Edit' ? 'Check' : 'Edit';
     setActionType(state);
   };
 
-  const handlerCancelButtonModalWindow = () => {
+  const handleCancelButtonModalWindow = () => {
     setVisibleModalWindow(false);
     setStep(1);
   };
 
-  const handlerNextButtonModalWindow = () => {
+  const handleNextButtonModalWindow = () => {
     formHandlerLink
       .validateFields()
       .then(values => {
@@ -68,12 +74,12 @@ export const ReviewRequestsPage = () => {
       });
   };
 
-  const handlerSaveNotPublishedButtonModalWindow = () => {
-    handlerCancelButtonModalWindow();
+  const handleSaveNotPublishedButtonModalWindow = () => {
+    handleCancelButtonModalWindow();
   };
 
-  const handlerSavePublishedButtonModalWindow = () => {
-    handlerCancelButtonModalWindow();
+  const handleSavePublishedButtonModalWindow = () => {
+    handleCancelButtonModalWindow();
   };
 
   const sortStrings = (a, b, field) => {
@@ -86,20 +92,85 @@ export const ReviewRequestsPage = () => {
     return 0;
   };
 
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+  };
+
+  const handleReset = clearFilters => {
+    clearFilters();
+    setSearchText('');
+  };
+
+  const getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => {
+            searchInput = node;
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ width: 188, marginBottom: 8, display: 'block' }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Search
+          </Button>
+          <Button onClick={() => handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+            Reset
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+    onFilter: (value, record) =>
+      record[dataIndex]
+        ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
+        : '',
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) {
+        setTimeout(() => searchInput.select(), 100);
+      }
+    },
+    render: text =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ''}
+        />
+      ) : (
+        text
+      )
+  });
+
   const columns = [
     {
       title: 'Task name',
-      dataIndex: 'taskName',
-      key: 'taskName',
+      dataIndex: 'task',
+      key: 'task',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'taskName')
+      sorter: (a, b) => sortStrings(a, b, 'task'),
+      ...getColumnSearchProps('task')
     },
     {
       title: 'Developer',
       dataIndex: 'developer',
       key: 'developer',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'developer')
+      sorter: (a, b) => sortStrings(a, b, 'developer'),
+      ...getColumnSearchProps('developer')
     },
     {
       title: 'Status',
@@ -129,8 +200,8 @@ export const ReviewRequestsPage = () => {
         <a
           tabIndex={index}
           role="button"
-          onKeyPress={() => handlerClickAction(index)}
-          onClick={() => handlerClickAction(index)}
+          onKeyPress={() => handleClickAction(index)}
+          onClick={() => handleClickAction(index)}
         >
           {record.actionType}
         </a>
@@ -139,22 +210,22 @@ export const ReviewRequestsPage = () => {
   ];
 
   const buttonsStepOne = [
-    <Button key="1" onClick={handlerCancelButtonModalWindow}>
+    <Button key="1" onClick={handleCancelButtonModalWindow}>
       Cancel
     </Button>,
-    <Button key="2" type="primary" onClick={handlerNextButtonModalWindow}>
+    <Button key="2" type="primary" onClick={handleNextButtonModalWindow}>
       Next
     </Button>
   ];
 
   const buttonsStepTwo = [
-    <Button key="1" onClick={handlerCancelButtonModalWindow}>
+    <Button key="1" onClick={handleCancelButtonModalWindow}>
       Cancel
     </Button>,
-    <Button key="2" type="primary" onClick={handlerSaveNotPublishedButtonModalWindow}>
+    <Button key="2" type="primary" onClick={handleSaveNotPublishedButtonModalWindow}>
       Save and not published
     </Button>,
-    <Button key="3" type="primary" onClick={handlerSavePublishedButtonModalWindow}>
+    <Button key="3" type="primary" onClick={handleSavePublishedButtonModalWindow}>
       Save and published
     </Button>
   ];
@@ -169,7 +240,7 @@ export const ReviewRequestsPage = () => {
         title="Creating new rewiew request"
         visible={visebleModalWindow}
         buttons={step === 1 ? buttonsStepOne : buttonsStepTwo}
-        handlerCancelButton={handlerCancelButtonModalWindow}
+        handlerCancelButton={handleCancelButtonModalWindow}
       >
         {step === 1 ? (
           <SelectingTask getFormHendler={getFormHendler} />

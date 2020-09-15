@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
 import React, { useEffect } from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, Select } from 'antd';
 
 export const SelectingTask = ({ getFormHendler }) => {
   const [form] = Form.useForm();
+  const { Option } = Select;
 
   useEffect(() => {
     getFormHendler(form);
@@ -18,6 +20,29 @@ export const SelectingTask = ({ getFormHendler }) => {
         modifier: 'public'
       }}
     >
+      <Form.Item
+        name="task"
+        label="Select task"
+        rules={[
+          {
+            required: true,
+            message: 'Please select task!'
+          }
+        ]}
+      >
+        <Select
+          showSearch
+          placeholder="Select a task"
+          optionFilterProp="children"
+          filterOption={(input, option) =>
+            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }
+        >
+          <Option value="task1">Task #1</Option>
+          <Option value="task2">Task #2</Option>
+          <Option value="task3">Task #3</Option>
+        </Select>
+      </Form.Item>
       <Form.Item
         name="linkOnTheTaskSolution"
         label="Link on the task solution"
