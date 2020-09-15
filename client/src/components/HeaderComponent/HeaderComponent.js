@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Layout, Menu, Row, Col } from 'antd';
 
 import './HeaderComponent.css';
 import logo from '../../assets/imgs/rsschool-logo.svg';
+import { AuthContext } from '../../context/AuthContext';
 
 const { Header } = Layout;
 
 const HeaderComponent = props => {
   const { activeMenuItem } = props;
+  const auth = useContext(AuthContext);
   return (
     <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
       <Row justify="space-between">
@@ -37,8 +39,9 @@ const HeaderComponent = props => {
             </Menu.Item>
           </Menu>
         </Col>
-        <Col span={3} style={{ textAlign: 'right', color: '#fff' }}>
-          Role
+        <Col span={3} style={{ textAlign: 'right', color: '#fff', textTransform: 'capitalize' }}>
+          Your role:&nbsp;
+          {auth.roles ? auth.roles : 'Error'}
         </Col>
       </Row>
     </Header>
