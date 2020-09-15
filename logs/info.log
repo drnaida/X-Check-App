@@ -304,3 +304,13 @@
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"error","message":"   Request Error"}
 {"url":"/auth/register","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@","roles":["supervisor"]},"level":"info","message":"    Request logging"}
 {"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@","roles":["supervisor"]},"level":"info","message":"    Request logging"}
+{"url":"/routes.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/routes.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/HeaderComponent.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/HeaderComponent.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/App.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/App.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/CrossCheckSessionsPage.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/CrossCheckSessionsPage.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/src/index.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/src/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}

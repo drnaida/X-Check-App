@@ -9,7 +9,7 @@ const { Content } = Layout;
 const ReviewRequestsPage = () => {
   return (
     <Layout>
-      <HeaderComponent pageName="Review Requests" activeMenuItem="['2']" />
+      <HeaderComponent activeMenuItem="['2']" />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>Review Requests page</Content>
     </Layout>
   );

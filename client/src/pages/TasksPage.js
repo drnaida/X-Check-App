@@ -23,7 +23,7 @@ const TasksPage = () => {
 
   return (
     <Layout>
-      <HeaderComponent pageName="Tasks" activeMenuItem="['1']" />
+      <HeaderComponent activeMenuItem="['1']" />
       <Content style={{ padding: '0 50px', marginTop: 64 }}>Tasks page</Content>
     </Layout>
   );

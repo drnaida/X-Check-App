@@ -1,21 +1,27 @@
 import React from 'react';
 import { Layout, Menu, Row, Col } from 'antd';
+
 import './HeaderComponent.css';
+import logo from '../../assets/imgs/rsschool-logo.svg';
 
 const { Header } = Layout;
 
 const HeaderComponent = props => {
-  const { activeMenuItem, pageName } = props;
+  const { activeMenuItem } = props;
   return (
-    <Header style={{ position: 'fixed', zIndex: 1, width: '100%', padding: '0 10px' }}>
+    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
       <Row justify="space-between">
-        <Col span={2} style={{ textAlign: 'center', color: '#fff' }}>
+        <Col span={3} style={{ textAlign: 'center', color: '#fff' }}>
           <div style={{ display: 'flex' }}>
-            <div className="HeaderComponent-logo" />
-            <div>X-Check app</div>
+            <img
+              alt="RSSchool"
+              src={logo}
+              style={{ marginRight: '12px', width: '90px', height: '64px' }}
+            />
+            X-Check
           </div>
         </Col>
-        <Col span={7}>
+        <Col span={18}>
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={activeMenuItem}>
             <Menu.Item key="1">
               <a href="/tasks">Tasks</a>
@@ -31,10 +37,7 @@ const HeaderComponent = props => {
             </Menu.Item>
           </Menu>
         </Col>
-        <Col span={7} style={{ textAlign: 'center', color: '#fff' }}>
-          {pageName}
-        </Col>
-        <Col span={8} style={{ textAlign: 'center', color: '#fff' }}>
+        <Col span={3} style={{ textAlign: 'right', color: '#fff' }}>
           Role
         </Col>
       </Row>
