@@ -67,7 +67,7 @@ export const ReviewRequestsPage = () => {
     taskState.actionType = published ? 'Check' : 'Edit';
     taskState.status = published ? 'Published' : 'Draft';
     const state = [...dataSource];
-    taskState.key = `${state.length}`;
+    taskState.key = `${state.length + 1}`;
     state.push(taskState);
     setActionType(state);
     setTask({});
