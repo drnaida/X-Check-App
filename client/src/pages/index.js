@@ -3,3 +3,4 @@ export * from './HomePage';
 export * from './TasksPage';
 export * from './CreateTaskPage';
 export * from './ReviewRequestsPage/ReviewRequestsPage';
+export * from './CrossCheck';
