@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 import { Button, Row, Col, Typography, notification } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,10 +9,12 @@ import { ModalWindow } from '../../components';
 
 import {
   addTask,
+  editTask,
   setTaskAction,
   addRequirementAction,
   editRequirementAction,
-  deleteRequirementAction
+  deleteRequirementAction,
+  getTaskById
 } from '../../store/actions';
 import { taskInitialState } from '../../store/reducers';
 import { getTaskSelector } from '../../store/selectors';
@@ -25,8 +28,9 @@ import '../../index.scss';
 import 'antd/dist/antd.css';
 
 export const CreateTaskPage = () => {
+  const { id: taskId } = useParams();
   const { request } = useHttp();
-  const { token } = useContext(AuthContext);
+  const { token, githubId } = useContext(AuthContext);
   const dispatch = useDispatch();
   const task = useSelector(getTaskSelector);
   const { title, categories, requirements } = task;
@@ -172,7 +176,7 @@ export const CreateTaskPage = () => {
   };
 
   const addRequirement = () => {
-    if (requirementTitle && requirementItems.length) {
+    if (requirementTitle && requirementItems.length && !requirementItemDescription.trim()) {
       if (requirementId) {
         const changedRequirements = requirements.map(item => {
           return item.id === requirementId
@@ -201,7 +205,10 @@ export const CreateTaskPage = () => {
     } else {
       let message = '';
       let description = '';
-      if (!requirementTitle) {
+      if (requirementItemDescription.trim()) {
+        message = 'Item for check has not been saved';
+        description = 'You should save item for check before to save the task';
+      } else if (!requirementTitle) {
         message = 'Title of the requirement is empty';
         description = 'You have to enter the name of the requirement';
       } else if (!requirementItems.length) {
@@ -218,28 +225,58 @@ export const CreateTaskPage = () => {
       const description = 'You have to enter the name of the task';
       warning(message, description);
     } else {
-      task.id = uuidv4();
-      const res = await addTask(task, request, token);
+      let res;
+
+      if (taskId) {
+        res = await editTask(taskId, task, request, token);
+      } else {
+        task.id = uuidv4();
+        task.author = githubId;
+        res = await addTask(task, request, token);
+      }
+
       if (res) {
+        let message = '';
+        let description = '';
+
+        if (taskId) {
+          message = 'Task has been changed';
+        } else {
+          message = 'Task has been added';
+          description = `You have created the ${task.title}`;
+          dispatch(setTaskAction(taskInitialState));
+        }
+
+        clearRequirement();
+        clearRequirementItemForm();
+
         notification.info({
-          message: 'Task has been added',
-          description: `You have created the ${task.title}`,
+          message,
+          description,
           placement: 'topRight',
           duration: 10
         });
-        clearRequirement();
-        clearRequirementItemForm();
-        dispatch(setTaskAction(taskInitialState));
       } else {
         const message = 'Task has not been added';
         const description = 'Something is wrong. Please try again';
+
         warning(message, description);
       }
     }
   };
 
   useEffect(() => {
-    dispatch(setTaskAction(taskInitialState));
+    async function fetchData() {
+      const taskById = await getTaskById(taskId, request, token);
+
+      dispatch(setTaskAction(taskById));
+    }
+
+    if (taskId) {
+      fetchData();
+    } else {
+      dispatch(setTaskAction(taskInitialState));
+    }
   }, []);
 
   return (

@@ -24,7 +24,27 @@ export function addTaskNameAction(taskName) {
   return { type: ADD_TASK_NAME, payload: taskName };
 }
 
+export const getTaskList = async (request, token) => {
+  const res = await request('/tasks', 'GET', null, { authorization: token });
+  return res;
+};
+
+export const getTaskById = async (id, request, token) => {
+  const res = await request(`/tasks/${id}`, 'GET', null, { authorization: token });
+  return res;
+};
+
 export const addTask = async (task, request, token) => {
   const res = await request('/tasks', 'POST', { ...task }, { authorization: token });
+  return res;
+};
+
+export const editTask = async (id, task, request, token) => {
+  const res = await request(`/tasks/${id}`, 'PUT', { ...task }, { authorization: token });
+  return res;
+};
+
+export const deleteTask = async (id, request, token) => {
+  const res = await request(`/tasks/${id}`, 'DELETE', null, { authorization: token });
   return res;
 };

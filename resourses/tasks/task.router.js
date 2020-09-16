@@ -4,9 +4,9 @@ const taskService = require('./task.service');
 const catchErrors = require('../../helpers/catchErrors');
 const { ErrorHandler } = require('../../helpers/errorHandler');
 const {
+  OK,
   BAD_REQUEST,
   NOT_FOUND,
-  NO_CONTENT,
   getStatusText
 } = require('http-status-codes');
 const { taskBodyValidation } = require('../../validators/validator');
@@ -69,15 +69,15 @@ router.route('/:id').put(
 
 router.route('/:id').delete(
   catchErrors(async (req, res) => {
-    const deletedUser = await taskService.deleteTask(req.params.id);
-    if (!deletedUser) {
+    const deleteTask = await taskService.deleteTask(req.params.id);
+    if (!deleteTask) {
       throw new ErrorHandler(
         NOT_FOUND,
         `Task with id ${req.params.id} not found`
       );
     } else {
       await res
-        .status(NO_CONTENT)
+        .status(OK)
         .json({ message: 'The task has been deleted' });
     }
   })
