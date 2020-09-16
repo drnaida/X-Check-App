@@ -328,3 +328,11 @@
 {"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"111","roles":["supervisor","student","author","course_manager"]},"level":"error","message":"   Request Error"}
 {"url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
 {"statusCode":500,"statusText":"Internal Server Error","url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/auth/login","method":"POST","query":{},"body":{"githubId":"drnaida","password":"0r1@nd0c@"},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
