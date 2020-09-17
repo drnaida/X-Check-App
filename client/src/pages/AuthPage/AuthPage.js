@@ -68,7 +68,9 @@ export const AuthPage = () => {
           <Form.Item
             name="password"
             noStyle
-            rules={[{ required: true, message: 'Password is required' }]}
+            rules={[
+              { required: true, message: 'Password is required' },
+              { min: 6, message: 'The password must be at least 6 characters long' }]}
           >
             <Input style={{ width: '50%' }} type="password" placeholder="Please input password" />
           </Form.Item>
