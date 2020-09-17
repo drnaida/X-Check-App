@@ -118,3 +118,4 @@
 {"statusCode":500,"statusText":"Internal Server Error","url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
 {"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
 {"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/1","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}

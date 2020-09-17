@@ -127,15 +127,15 @@ const createColomns = (deleteTaskHandler, searchTextObj, searchedColumnObj) => {
       title: 'Action',
       dataIndex: 'id',
       key: 'id',
-      render: (_text, record, index) => (
+      render: (_text, record) => (
         <>
-          <Link to="/create-task/1">
+          <Link to={`/create-task/${record.id}/`}>
             <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
           </Link>
           <Button
             type="text"
             size="large"
-            onClick={() => deleteTaskHandler(1)}
+            onClick={() => deleteTaskHandler(record.id)}
             icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
           />
         </>
