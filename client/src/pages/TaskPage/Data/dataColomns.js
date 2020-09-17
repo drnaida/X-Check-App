@@ -88,8 +88,8 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
   return [
     {
       title: 'Task name',
-      dataIndex: 'task',
-      key: 'task',
+      dataIndex: 'title',
+      key: 'title',
       sortDirections: ['descend', 'ascend'],
       sorter: (a, b) => sortStrings(a, b, 'task'),
       ...getColumnSearchProps('task')

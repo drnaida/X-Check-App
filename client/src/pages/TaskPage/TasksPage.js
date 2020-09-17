@@ -21,23 +21,6 @@ export const TasksPage = () => {
     console.log('blablabla');
   };
 
-  const dataSource = [
-    {
-      key: '1',
-      task: 'qMike',
-      author: 'AMike',
-      status: 'Draft',
-      actionType: 'Check'
-    },
-    {
-      key: '2',
-      task: 'Nick',
-      author: 'DJohn',
-      status: 'Published',
-      actionType: 'Edit'
-    }
-  ];
-
   const columns = createColomns(
     handleClickAction,
     { searchText, setSearchText },
@@ -64,7 +47,7 @@ export const TasksPage = () => {
       });
     }
   };
-
+  console.log(taskList);
   useEffect(() => {
     async function fetchData() {
       setTaskList(await getTaskList(request, token));
@@ -72,30 +55,27 @@ export const TasksPage = () => {
     fetchData();
   }, []);
 
+  const key = 0;
+  const { id, title } = taskList;
+
   return (
     <div>
       <div>Tasks page</div>
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={taskList} columns={columns} />
       <ul>
-        {taskList.map((task, index) => {
-          const key = index;
-          const { id, title } = task;
-          return (
-            <li key={key}>
-              <span>{title}</span>
-              &nbsp;
-              <Link to={`/create-task/${id}`}>
-                <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
-              </Link>
-              <Button
-                type="text"
-                size="large"
-                onClick={() => deleteTaskHandler(id)}
-                icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
-              />
-            </li>
-          );
-        })}
+        <li key={key}>
+          <span>{title}</span>
+          &nbsp;
+          <Link to={`/create-task/${id}`}>
+            <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
+          </Link>
+          <Button
+            type="text"
+            size="large"
+            onClick={() => deleteTaskHandler(id)}
+            icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+          />
+        </li>
       </ul>
     </div>
   );
