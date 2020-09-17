@@ -375,3 +375,24 @@
 {"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
 {"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
 {"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks/undefined","method":"DELETE","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks/undefined","method":"DELETE","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks/undefined","method":"DELETE","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"POST","query":{},"body":{"id":"ac2d4ff6-3b72-4da6-a097-478d8a2fee89","title":"Songbird","author":"drnaida","categories":["Basic","Advanced","Extra","Fines"],"requirements":[{"id":"23641e22-afbe-4df6-8417-749299c4c987","title":"teset","category":"Basic","items":[{"id":"fde97397-5dd7-4337-95ad-b28bf12c9d0d","description":"test","score":0,"onlyForMentors":false}]}]},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}
+{"url":"/tasks","method":"GET","query":{},"body":{},"level":"info","message":"    Request logging"}

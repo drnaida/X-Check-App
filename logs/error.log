@@ -116,3 +116,5 @@
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"111"},"level":"error","message":"   Request Error"}
 {"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"111","roles":["supervisor","student","author","course_manager"]},"level":"error","message":"   Request Error"}
 {"statusCode":500,"statusText":"Internal Server Error","url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}

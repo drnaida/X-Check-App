@@ -2,11 +2,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { Button, Input, Space } from 'antd';
+import { Link } from 'react-router-dom';
 
-const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
+const createColomns = (deleteTaskHandler, searchTextObj, searchedColumnObj) => {
   let searchInput;
 
   const { searchText, setSearchText } = searchTextObj;
@@ -91,8 +92,8 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
       dataIndex: 'title',
       key: 'title',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'task'),
-      ...getColumnSearchProps('task')
+      sorter: (a, b) => sortStrings(a, b, 'title'),
+      ...getColumnSearchProps('title')
     },
     {
       title: 'Author',
@@ -124,17 +125,20 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
     },
     {
       title: 'Action',
-      dataIndex: 'action',
-      key: 'action',
+      dataIndex: 'id',
+      key: 'id',
       render: (_text, record, index) => (
-        <a
-          tabIndex={index}
-          role="button"
-          onKeyPress={() => handleClickAction(index)}
-          onClick={() => handleClickAction(index)}
-        >
-          {record.actionType}
-        </a>
+        <>
+          <Link to="/create-task/1">
+            <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
+          </Link>
+          <Button
+            type="text"
+            size="large"
+            onClick={() => deleteTaskHandler(1)}
+            icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+          />
+        </>
       )
     }
   ];

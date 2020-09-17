@@ -57,6 +57,7 @@ export const TasksPage = () => {
 
   const key = 0;
   const { id, title } = taskList;
+  console.log(id);
 
   return (
     <div>
