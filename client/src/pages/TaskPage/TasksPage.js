@@ -1,17 +1,52 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, notification } from 'antd';
+import { Button, Table, notification } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import { getTaskList, deleteTask } from '../store/actions';
-import { useHttp } from '../hooks';
-import { AuthContext } from '../context/AuthContext';
+import { getTaskList, deleteTask } from '../../store/actions';
+import { useHttp } from '../../hooks';
+import { AuthContext } from '../../context/AuthContext';
+
+import createColomns from './Data/dataColomns';
 
 export const TasksPage = () => {
   const { request } = useHttp();
   const { token } = useContext(AuthContext);
   const [taskList, setTaskList] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [searchedColumn, setSearchedColumn] = useState('');
+
+  const handleClickAction = () => {
+    console.log('blablabla');
+  };
+
+  const dataSource = [
+    {
+      key: '1',
+      task: 'qMike',
+      developer: 'AMike',
+      status: 'Draft',
+      linkOnTheTaskSolution: '',
+      linkOnThePullRequest: '',
+      actionType: 'Check'
+    },
+    {
+      key: '2',
+      task: 'Nick',
+      developer: 'DJohn',
+      status: 'Published',
+      linkOnTheTaskSolution: '',
+      linkOnThePullRequest: '',
+      actionType: 'Edit'
+    }
+  ];
+
+  const columns = createColomns(
+    handleClickAction,
+    { searchText, setSearchText },
+    { searchedColumn, setSearchedColumn }
+  );
 
   const deleteTaskHandler = async id => {
     const res = await deleteTask(id, request, token);
@@ -44,6 +79,7 @@ export const TasksPage = () => {
   return (
     <div>
       <div>Tasks page</div>
+      <Table dataSource={dataSource} columns={columns} />
       <ul>
         {taskList.map((task, index) => {
           const key = index;
