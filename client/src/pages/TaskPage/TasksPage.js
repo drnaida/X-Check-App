@@ -25,19 +25,15 @@ export const TasksPage = () => {
     {
       key: '1',
       task: 'qMike',
-      developer: 'AMike',
+      author: 'AMike',
       status: 'Draft',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
       actionType: 'Check'
     },
     {
       key: '2',
       task: 'Nick',
-      developer: 'DJohn',
+      author: 'DJohn',
       status: 'Published',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
       actionType: 'Edit'
     }
   ];
