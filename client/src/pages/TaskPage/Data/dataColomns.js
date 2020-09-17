@@ -129,7 +129,7 @@ const createColomns = (deleteTaskHandler, searchTextObj, searchedColumnObj) => {
       key: 'id',
       render: (_text, record) => (
         <>
-          <Link to={`/create-task/${record.id}/`}>
+          <Link to={`/create-task/${record.id}/`} style={{ marginRight: '20px' }}>
             <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
           </Link>
           <Button

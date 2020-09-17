@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Table, notification } from 'antd';
+import { Table, notification, Layout } from 'antd';
 
 import { getTaskList, deleteTask } from '../../store/actions';
 import { useHttp } from '../../hooks';
 import { AuthContext } from '../../context/AuthContext';
+import { HeaderComponent, FooterComponent } from '../../components';
 
 import createColomns from './Data/dataColomns';
+
+const { Content } = Layout;
 
 export const TasksPage = () => {
   const { request } = useHttp();
@@ -49,8 +52,12 @@ export const TasksPage = () => {
   }, []);
 
   return (
-    <div>
-      <Table dataSource={taskList} columns={columns} />
-    </div>
+    <Layout>
+      <HeaderComponent activeMenuItem="['1']" />
+      <Content style={{ padding: '0 50px', marginTop: 64 }}>
+        <Table dataSource={taskList} columns={columns} />
+      </Content>
+      <FooterComponent />
+    </Layout>
   );
 };
