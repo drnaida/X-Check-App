@@ -6,15 +6,15 @@ import { ModalWindow } from '../../../../components/ModalWindow';
 import { SelectingTask } from '../SelectingTask';
 import { CheckingYourself } from '../CheckingYourself';
 
-import createColomns from '../../Data/dataColomns';
+import createColumns from '../../Data/dataColumns';
 import { buttonsStepOne, buttonsStepTwo } from '../../Data/dataButtons';
 
 export const ReviewRequests = () => {
   let formHandlerLink;
-  const [dataSource, setActionType] = useState([
+  const [dataSource, setDataSource] = useState([
     {
       key: '1',
-      task: 'qMike',
+      task: 'qMike1',
       developer: 'AMike',
       status: 'Draft',
       linkOnTheTaskSolution: '',
@@ -23,9 +23,27 @@ export const ReviewRequests = () => {
     },
     {
       key: '2',
-      task: 'Nick',
+      task: 'bNick2',
       developer: 'DJohn',
       status: 'Published',
+      linkOnTheTaskSolution: '',
+      linkOnThePullRequest: '',
+      actionType: 'Edit'
+    },
+    {
+      key: '3',
+      task: 'zNick3',
+      developer: 'DJohn',
+      status: 'Completed',
+      linkOnTheTaskSolution: '',
+      linkOnThePullRequest: '',
+      actionType: 'Edit'
+    },
+    {
+      key: '4',
+      task: 'wNick2',
+      developer: 'DJohn',
+      status: 'Draft',
       linkOnTheTaskSolution: '',
       linkOnThePullRequest: '',
       actionType: 'Edit'
@@ -37,11 +55,27 @@ export const ReviewRequests = () => {
   const [searchedColumn, setSearchedColumn] = useState('');
   const [task, setTask] = useState({});
 
-  const handleClickAction = index => {
+  const handleActionEdit = index => {
     const state = [...dataSource];
     const { actionType } = state[index];
     state[index].actionType = actionType === 'Edit' ? 'Check' : 'Edit';
-    setActionType(state);
+    setDataSource(state);
+  };
+
+  const handleActionDelete = index => {
+    const state = [...dataSource];
+    state.splice(index, 1);
+    setDataSource(
+      state.map((value, i) => {
+        const elem = { ...value };
+        elem.key = (i + 1).toString();
+        return elem;
+      })
+    );
+  };
+
+  const handleActionCheck = index => {
+    console.log(index);
   };
 
   const handleCancelButtonModalWindow = () => {
@@ -69,7 +103,7 @@ export const ReviewRequests = () => {
     const state = [...dataSource];
     taskState.key = `${state.length + 1}`;
     state.push(taskState);
-    setActionType(state);
+    setDataSource(state);
     setTask({});
     handleCancelButtonModalWindow();
   };
@@ -81,8 +115,8 @@ export const ReviewRequests = () => {
     formHandlerLink = formHandler;
   };
 
-  const columns = createColomns(
-    handleClickAction,
+  const columns = createColumns(
+    { handleActionEdit, handleActionDelete, handleActionCheck },
     { searchText, setSearchText },
     { searchedColumn, setSearchedColumn }
   );
