@@ -24,4 +24,13 @@ const taskBodyValidation = () => {
   ]
 }
 
-module.exports = { loginBodyValidation, registerBodyValidation, taskBodyValidation }
+const reviewRequestBodyValidation = () => {
+  return [
+    check('task', 'task is not passed').exists(),
+    check('linkOnPr', 'linkOnPr is not passed').exists(),
+    check('linkOnTask', 'linkOnTask is not passed').exists(),
+    check('developer', 'developer is not passed').exists()
+  ]
+}
+
+module.exports = { loginBodyValidation, registerBodyValidation, taskBodyValidation, reviewRequestBodyValidation }
