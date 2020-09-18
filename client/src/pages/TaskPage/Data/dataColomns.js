@@ -104,9 +104,9 @@ const createColomns = (deleteTaskHandler, searchTextObj, searchedColumnObj) => {
       ...getColumnSearchProps('author')
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'State',
+      dataIndex: 'state',
+      key: 'state',
       filters: [
         {
           text: 'Draft',
@@ -115,31 +115,29 @@ const createColomns = (deleteTaskHandler, searchTextObj, searchedColumnObj) => {
         {
           text: 'Published',
           value: 'PUBLISHED'
-        },
-        {
-          text: 'Completed',
-          value: 'COMPLETED'
         }
       ],
-      onFilter: (value, record) => record.status.toUpperCase().indexOf(value) === 0
+      onFilter: (value, record) => record.state.toUpperCase().indexOf(value) === 0
     },
     {
       title: 'Action',
       dataIndex: 'id',
       key: 'id',
-      render: (_text, record) => (
-        <>
-          <Link to={`/create-task/${record.id}/`} style={{ marginRight: '20px' }}>
-            <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
-          </Link>
-          <Button
-            type="text"
-            size="large"
-            onClick={() => deleteTaskHandler(record.id)}
-            icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
-          />
-        </>
-      )
+      render: (_text, record) => {
+        return record.state !== 'PUBLISHED' ? (
+          <>
+            <Link to={`/create-task/${record.id}/`} style={{ marginRight: '20px' }}>
+              <EditOutlined style={{ fontSize: '20px', color: '#595959' }} />
+            </Link>
+            <Button
+              type="text"
+              size="large"
+              onClick={() => deleteTaskHandler(record.id)}
+              icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+            />
+          </>
+        ) : null;
+      }
     }
   ];
 };

@@ -8,11 +8,11 @@ import './TaskState.scss';
 // eslint-disable-next-line react/prop-types
 export const TaskState = ({ state }) => {
   return (
-    <div>
-      <label style={{ width: '100%', display: 'block' }}>State</label>
+    <div className="state">
+      <label className="state-label">State</label>
       <Input
+        className={state === 'PUBLISHED' ? 'state-text state-text__state-published' : 'state-text'}
         size="large"
-        style={{ paddingLeft: 0, color: '#595959' }}
         value={state}
         bordered={false}
         disabled

@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 
 export const ColunmHeaders = () => {
   return (
-    <Row gutter={[0, 25]} style={{ borderBottom: '1px solid #F0F0F0' }}>
+    <Row gutter={[0, 25]} style={{ borderBottom: '1px dotted #595959' }}>
       <Col span={16}>
         <div>Description</div>
       </Col>

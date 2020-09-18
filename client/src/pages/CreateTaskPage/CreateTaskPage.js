@@ -298,6 +298,11 @@ export const CreateTaskPage = () => {
     <Layout>
       <HeaderComponent activeMenuItem="['Create Task']" />
       <Content style={{ minHeight: '90vh', padding: '0 36px', marginTop: 100 }}>
+        <Row gutter={[0, 20]}>
+          <Col span={24}>
+            <Typography.Title level={3}>{taskId ? 'Edit task' : 'Create task'}</Typography.Title>
+          </Col>
+        </Row>
         <Row gutter={[0, 30]} align="bottom" justify="space-between">
           <Col span={6}>
             <TaskNameInput title={title} isDisabled={task.state === 'PUBLISHED'} />
@@ -368,6 +373,7 @@ export const CreateTaskPage = () => {
                       setReqirement={setReqirement}
                       deleteRequirement={deleteRequirement}
                       toggleModalWindow={toggleModalWindow}
+                      taskState={state}
                     />
                   );
                 })}
