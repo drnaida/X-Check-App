@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
-import { Layout, Menu, Row, Col } from 'antd';
+import { Layout, Row, Col } from 'antd';
 
-import logo from '../../assets/imgs/rsschool-logo.svg';
 import { AuthContext } from '../../context/AuthContext';
+
+import { MenuComponent } from '../MenuComponent';
+
+import { Logo, User } from './components';
 
 const { Header } = Layout;
 
@@ -11,40 +14,24 @@ export const HeaderComponent = props => {
   const { activeMenuItem } = props;
   const auth = useContext(AuthContext);
   return (
-    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+    <Header style={{ position: 'absolute', zIndex: 1, width: '100%' }}>
       <Row justify="space-between">
         <Col span={3} style={{ textAlign: 'center', color: '#fff' }}>
-          <div style={{ display: 'flex' }}>
-            <img
-              alt="RSSchool"
-              src={logo}
-              style={{ marginRight: '12px', width: '90px', height: '64px' }}
-            />
-            X-Check
-          </div>
+          <Logo />
         </Col>
         <Col span={18}>
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={activeMenuItem}>
-            <Menu.Item key="1">
-              <a href="/tasks">Tasks</a>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <a href="/create-task">Create Task</a>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <a href="/review-requests">Review Requests</a>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <a href="/reviews">Reviews</a>
-            </Menu.Item>
-            <Menu.Item key="5">
-              <a href="/cross-check-sessions">Cross-check</a>
-            </Menu.Item>
-          </Menu>
+          <MenuComponent activeMenuItem={activeMenuItem} />
         </Col>
-        <Col span={3} style={{ textAlign: 'right', color: '#fff', textTransform: 'capitalize' }}>
-          Your role:&nbsp;
-          {auth.roles ? auth.roles : 'Error'}
+        <Col
+          span={3}
+          style={{
+            textAlign: 'right',
+            color: '#fff',
+            textTransform: 'capitalize',
+            cursor: 'default'
+          }}
+        >
+          <User auth={auth} />
         </Col>
       </Row>
     </Header>

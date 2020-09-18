@@ -9,7 +9,7 @@ import './TaskNameInput.scss';
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // eslint-disable-next-line react/prop-types
-export const TaskNameInput = ({ title }) => {
+export const TaskNameInput = ({ title, isDisabled }) => {
   const dispatch = useDispatch();
 
   const addTaskName = event => {
@@ -25,6 +25,7 @@ export const TaskNameInput = ({ title }) => {
         size="large"
         value={title}
         onChange={addTaskName}
+        disabled={isDisabled}
         allowClear
       />
     </div>
