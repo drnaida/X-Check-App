@@ -2,10 +2,11 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
-import { Button, Row, Col, Typography, notification } from 'antd';
+import { Button, Row, Col, Typography, notification, Layout } from 'antd';
+
 import { v4 as uuidv4 } from 'uuid';
 
-import { ModalWindow } from '../../components';
+import { HeaderComponent, FooterComponent, ModalWindow } from '../../components';
 
 import {
   addTask,
@@ -22,18 +23,26 @@ import { useHttp } from '../../hooks';
 
 import { AuthContext } from '../../context/AuthContext';
 
-import { TaskNameInput, Requirement, AddRequirementWindow } from './components';
+import {
+  TaskNameInput,
+  TaskDeadlineInput,
+  TaskState,
+  Requirement,
+  AddRequirementWindow,
+  ColunmHeaders
+} from './components';
 
 import '../../index.scss';
 import 'antd/dist/antd.css';
 
 export const CreateTaskPage = () => {
+  const { Content } = Layout;
   const { id: taskId } = useParams();
   const { request } = useHttp();
   const { token, githubId } = useContext(AuthContext);
   const dispatch = useDispatch();
   const task = useSelector(getTaskSelector);
-  const { title, categories, requirements } = task;
+  const { title, categories, requirements, deadline, state } = task;
   const [isModalWindowOpen, setIsModalWindowOpen] = useState(false);
   const [requirementId, setRequirementId] = useState('');
   const [requirementTitle, setRequirementTitle] = useState('');
@@ -230,6 +239,7 @@ export const CreateTaskPage = () => {
       if (taskId) {
         res = await editTask(taskId, task, request, token);
       } else {
+        console.log(task);
         task.id = uuidv4();
         task.author = githubId;
         res = await addTask(task, request, token);
@@ -265,6 +275,11 @@ export const CreateTaskPage = () => {
     }
   };
 
+  const publishTask = () => {
+    task.state = 'PUBLISHED';
+    saveTask();
+  };
+
   useEffect(() => {
     async function fetchData() {
       const taskById = await getTaskById(taskId, request, token);
@@ -280,93 +295,121 @@ export const CreateTaskPage = () => {
   }, []);
 
   return (
-    <div style={{ maxWidth: '1920px', margin: '0 auto', padding: '0 36px' }}>
-      <Row gutter={[0, 30]} align="bottom" justify="space-between">
-        <Col span={6}>
-          <TaskNameInput title={title} />
-        </Col>
-        <Col span={4}>
-          <Button type="primary" size="large" onClick={saveTask} block>
-            Save task
-          </Button>
-        </Col>
-      </Row>
-      <Row gutter={[0, 50]}>
-        <Col span={6}>
-          <Button type="primary" size="large" onClick={() => toggleModalWindow(null)} block>
-            Add requirement
-          </Button>
-        </Col>
-      </Row>
-
-      {categories.map(category => {
-        const basicRequirements = requirements.filter(
-          requirement => requirement.category === category
-        );
-        if (basicRequirements.length) {
-          return (
-            <div key={`${category}`}>
-              <Row gutter={[0, 15]}>
-                <Col span={6}>
-                  <Typography.Title level={3} style={{ marginTop: '25px' }}>
-                    {category !== 'Fines' ? `${category} scope` : `${category}`}
-                  </Typography.Title>
-                </Col>
-              </Row>
-              <Row gutter={[0, 25]} style={{ borderBottom: '1px solid #F0F0F0' }}>
-                <Col span={16}>
-                  <div>Description</div>
-                </Col>
-                <Col span={4}>
-                  <div>Score</div>
-                </Col>
-                <Col span={4}>
-                  <div>Only For Mentors</div>
-                </Col>
-              </Row>
-              {basicRequirements.map((basicRequirement, index) => {
-                const key = index;
-                return (
-                  <Requirement
-                    key={`${basicRequirement.title}${key}`}
-                    requirement={basicRequirement}
-                    setReqirement={setReqirement}
-                    deleteRequirement={deleteRequirement}
-                    toggleModalWindow={toggleModalWindow}
-                  />
-                );
-              })}
-            </div>
+    <Layout>
+      <HeaderComponent activeMenuItem="['Create Task']" />
+      <Content style={{ minHeight: '90vh', padding: '0 36px', marginTop: 100 }}>
+        <Row gutter={[0, 20]}>
+          <Col span={24}>
+            <Typography.Title level={3}>{taskId ? 'Edit task' : 'Create task'}</Typography.Title>
+          </Col>
+        </Row>
+        <Row gutter={[0, 30]} align="bottom" justify="space-between">
+          <Col span={6}>
+            <TaskNameInput title={title} isDisabled={task.state === 'PUBLISHED'} />
+          </Col>
+          <Col span={4}>
+            <TaskDeadlineInput deadline={deadline} isDisabled={task.state === 'PUBLISHED'} />
+          </Col>
+          <Col span={2}>
+            <TaskState state={state} />
+          </Col>
+          <Col span={4}>
+            <Button
+              type="ghost"
+              size="large"
+              onClick={saveTask}
+              disabled={task.state === 'PUBLISHED'}
+              block
+            >
+              Save and not publish
+            </Button>
+          </Col>
+          <Col span={4}>
+            <Button
+              type="primary"
+              size="large"
+              onClick={publishTask}
+              disabled={task.state === 'PUBLISHED'}
+              block
+            >
+              Finish and publish
+            </Button>
+          </Col>
+        </Row>
+        <Row gutter={[0, 50]}>
+          <Col span={6}>
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => toggleModalWindow(null)}
+              disabled={task.state === 'PUBLISHED'}
+              block
+            >
+              Add requirement
+            </Button>
+          </Col>
+        </Row>
+        {categories.map(category => {
+          const basicRequirements = requirements.filter(
+            requirement => requirement.category === category
           );
-        }
-        return null;
-      })}
-      <ModalWindow
-        title={!requirementId ? 'Add requirement' : 'Edit requirement'}
-        visible={isModalWindowOpen}
-        handlerOkButton={addRequirement}
-        handlerCancelButton={toggleModalWindow}
-      >
-        <AddRequirementWindow
-          title={requirementTitle}
-          category={requirementCategoty}
-          itemDescription={requirementItemDescription}
-          itemScore={requirementItemScore}
-          onlyForMentors={isOnlyForMentors}
-          requirementItemList={requirementItems}
-          categoryList={categories}
-          changeTitle={changeRequirementTitle}
-          changeCategory={changeRequirementCategoty}
-          changeItemDescription={changeRequirementItemDescription}
-          changeItemScore={changeRequirementItemScore}
-          changeOnlyForMentors={changeIsOnlyForMentors}
-          saveRequirementItem={changeRequirementItems}
-          deleteItem={deleteItem}
-          editItem={editItem}
-          setReqirementItem={setReqirementItem}
-          clearRequirementItemForm={clearRequirementItemForm}
-        />
-      </ModalWindow>
-    </div>
+          if (basicRequirements.length) {
+            return (
+              <div key={`${category}`}>
+                <Row gutter={[0, 15]}>
+                  <Col span={6}>
+                    <Typography.Title level={3} style={{ marginTop: '25px' }}>
+                      {category !== 'Fines' ? `${category} scope` : `${category}`}
+                    </Typography.Title>
+                  </Col>
+                </Row>
+                <ColunmHeaders />
+                {basicRequirements.map((basicRequirement, index) => {
+                  const key = index;
+                  return (
+                    <Requirement
+                      key={`${basicRequirement.title}${key}`}
+                      requirement={basicRequirement}
+                      setReqirement={setReqirement}
+                      deleteRequirement={deleteRequirement}
+                      toggleModalWindow={toggleModalWindow}
+                      taskState={state}
+                    />
+                  );
+                })}
+              </div>
+            );
+          }
+          return null;
+        })}
+        <ModalWindow
+          title={!requirementId ? 'Add requirement' : 'Edit requirement'}
+          visible={isModalWindowOpen}
+          handlerOkButton={addRequirement}
+          handlerCancelButton={toggleModalWindow}
+        >
+          <AddRequirementWindow
+            title={requirementTitle}
+            category={requirementCategoty}
+            itemDescription={requirementItemDescription}
+            itemScore={requirementItemScore}
+            onlyForMentors={isOnlyForMentors}
+            requirementItemList={requirementItems}
+            categoryList={categories}
+            changeTitle={changeRequirementTitle}
+            changeCategory={changeRequirementCategoty}
+            changeItemDescription={changeRequirementItemDescription}
+            changeItemScore={changeRequirementItemScore}
+            changeOnlyForMentors={changeIsOnlyForMentors}
+            saveRequirementItem={changeRequirementItems}
+            deleteItem={deleteItem}
+            editItem={editItem}
+            setReqirementItem={setReqirementItem}
+            clearRequirementItemForm={clearRequirementItemForm}
+          />
+        </ModalWindow>
+      </Content>
+      <FooterComponent />
+    </Layout>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Table, notification, Layout } from 'antd';
+import { Table, notification, Layout, Row, Col, Typography } from 'antd';
 
 import { getTaskList, deleteTask } from '../../store/actions';
 import { useHttp } from '../../hooks';
@@ -9,9 +9,8 @@ import { HeaderComponent, FooterComponent } from '../../components';
 
 import createColomns from './Data/dataColomns';
 
-const { Content } = Layout;
-
 export const TasksPage = () => {
+  const { Content } = Layout;
   const { request } = useHttp();
   const { token } = useContext(AuthContext);
   const [taskList, setTaskList] = useState([]);
@@ -43,7 +42,7 @@ export const TasksPage = () => {
     { searchText, setSearchText },
     { searchedColumn, setSearchedColumn }
   );
-  console.log(taskList);
+
   useEffect(() => {
     async function fetchData() {
       setTaskList(await getTaskList(request, token));
@@ -53,9 +52,18 @@ export const TasksPage = () => {
 
   return (
     <Layout>
-      <HeaderComponent activeMenuItem="['1']" />
-      <Content style={{ padding: '0 50px', marginTop: 64 }}>
-        <Table dataSource={taskList} columns={columns} />
+      <HeaderComponent activeMenuItem="['Tasks']" />
+      <Content style={{ minHeight: '90vh', padding: '0 36px', marginTop: 100 }}>
+        <Row gutter={[0, 20]}>
+          <Col span={24}>
+            <Typography.Title level={3}>Task list</Typography.Title>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Table dataSource={taskList} columns={columns} />
+          </Col>
+        </Row>
       </Content>
       <FooterComponent />
     </Layout>

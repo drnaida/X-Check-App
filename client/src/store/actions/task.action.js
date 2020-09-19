@@ -2,6 +2,7 @@ export const SET_TASK = 'SET_TASK';
 export const ADD_REQUIREMENT = 'ADD_REQUIREMENT';
 export const EDIT_REQUIREMENT = 'EDIT_REQUIREMENT';
 export const ADD_TASK_NAME = 'ADD_TASK_NAME';
+export const ADD_DEADLINE = 'ADD_DEADLINE';
 export const DELETE_REQUIREMENT = 'DELETE_REQUIREMENT';
 
 export function setTaskAction(task) {
@@ -22,6 +23,10 @@ export function deleteRequirementAction(requirementId) {
 
 export function addTaskNameAction(taskName) {
   return { type: ADD_TASK_NAME, payload: taskName };
+}
+
+export function addDeadlineAction(deadline) {
+  return { type: ADD_DEADLINE, payload: deadline };
 }
 
 export const getTaskList = async (request, token) => {
