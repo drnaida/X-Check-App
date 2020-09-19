@@ -1,17 +1,14 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
-import AuthPage from './pages/AuthPage/AuthPage';
-import HomePage from './pages/HomePage';
-import TasksPage from './pages/TasksPage';
-import CreateTaskPage from './pages/CreateTaskPage';
-import ReviewRequestsPage from './pages/ReviewRequestsPage';
-/* import AddRequirement from './pages/AddRequirement'; */
-/*
-        <Route path="/add-requirement">
-          <AddRequirement />
-        </Route>
-        */
+import {
+  AuthPage,
+  HomePage,
+  TasksPage,
+  CreateTaskPage,
+  ReviewRequestsPage,
+  CrossCheck
+} from './pages';
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
@@ -26,8 +23,14 @@ export const useRoutes = isAuthenticated => {
         <Route path="/review-requests">
           <ReviewRequestsPage />
         </Route>
-        <Route path="/create-tasks">
+        <Route exact path="/create-task">
           <CreateTaskPage />
+        </Route>
+        <Route path="/create-task/:id">
+          <CreateTaskPage />
+        </Route>
+        <Route path="/cross-check">
+          <CrossCheck />
         </Route>
         <Redirect to="/home" />
       </Switch>

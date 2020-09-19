@@ -101,3 +101,21 @@
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"rss333","password":"1234234xzczxc"},"level":"error","message":"   Request Error"}
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"rss333","password":"1234234zxczxc"},"level":"error","message":"   Request Error"}
 {"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"pavel","password":"1234"},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa"},"level":"error","message":"   Request Error"}
+{"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa","roles":["supervisor"]},"level":"error","message":"   Request Error"}
+{"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa","roles":["supervisor"]},"level":"error","message":"   Request Error"}
+{"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa","roles":["supervisor"]},"level":"error","message":"   Request Error"}
+{"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa","roles":["supervisor"]},"level":"error","message":"   Request Error"}
+{"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"111","roles":["author"]},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"aaa"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"111"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"111"},"level":"error","message":"   Request Error"}
+{"statusCode":403,"statusText":"Forbidden","url":"/auth/login","method":"POST","query":{},"body":{"githubId":"aaa","password":"111"},"level":"error","message":"   Request Error"}
+{"statusCode":400,"statusText":"Bad Request","url":"/auth/register","method":"POST","query":{},"body":{"githubId":"aaa","password":"111","roles":["supervisor","student","author","course_manager"]},"level":"error","message":"   Request Error"}
+{"statusCode":500,"statusText":"Internal Server Error","url":"/babel/parser/lib/index.js","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/undefined","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
+{"statusCode":404,"statusText":"Not Found","url":"/tasks/1","method":"GET","query":{},"body":{},"level":"error","message":"   Request Error"}
