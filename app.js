@@ -6,9 +6,10 @@ const { requestLoggerMiddleware } = require('./loggers/logger');
 const checkToken = require('./resourses/authentication/jwt/checkToken');
 const { handleError, handleInternalServerError, ErrorHandler } = require('./helpers/errorHandler');
 
+const loginRouter = require('./resourses/authentication/login.router');
 const userRouter = require('./resourses/users/user.router');
 const taskRouter = require('./resourses/tasks/task.router');
-const loginRouter = require('./resourses/authentication/login.router');
+const reviewRouter = require('./resourses/review-requests/review-request.router');
 
 app.use(express.json({extended: true}));
 
@@ -19,6 +20,8 @@ app.use('/auth', loginRouter);
 app.use('/users', checkToken, userRouter);
 
 app.use('/tasks', checkToken, taskRouter);
+
+app.use('/review-requests', checkToken, reviewRouter);
 
 app.use('/*', async (req, res, next) => {
   await res.status(NOT_FOUND).json({ message: getStatusText(NOT_FOUND) });
