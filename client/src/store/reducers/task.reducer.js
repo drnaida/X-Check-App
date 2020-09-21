@@ -3,13 +3,16 @@ import {
   ADD_REQUIREMENT,
   EDIT_REQUIREMENT,
   DELETE_REQUIREMENT,
-  ADD_TASK_NAME
+  ADD_TASK_NAME,
+  ADD_DEADLINE
 } from '../actions';
 
 export const taskInitialState = {
   id: '',
   title: '',
   author: '',
+  deadline: '',
+  state: 'DRAFT',
   categories: ['Basic', 'Advanced', 'Extra', 'Fines'],
   requirements: []
 };
@@ -33,6 +36,9 @@ export function taskReducer(state = taskInitialState, { type, payload }) {
 
     case ADD_TASK_NAME:
       return { ...state, title: payload };
+
+    case ADD_DEADLINE:
+      return { ...state, deadline: payload };
 
     default:
       return state;

@@ -8,7 +8,8 @@ export const Requirement = ({
   requirement,
   setReqirement,
   deleteRequirement,
-  toggleModalWindow
+  toggleModalWindow,
+  taskState
 }) => {
   const { items } = requirement;
 
@@ -26,22 +27,26 @@ export const Requirement = ({
               {requirement.title}
             </Typography.Title>
           </Col>
-          <Col span={1} style={{ textAlign: 'center' }}>
-            <Button
-              type="text"
-              size="large"
-              onClick={() => editRequirement(requirement.id)}
-              icon={<EditOutlined style={{ fontSize: '20px', color: '#595959' }} />}
-            />
-          </Col>
-          <Col span={1}>
-            <Button
-              type="text"
-              size="large"
-              onClick={() => deleteRequirement(requirement.id)}
-              icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
-            />
-          </Col>
+          {taskState !== 'PUBLISHED' && (
+            <>
+              <Col span={1} style={{ textAlign: 'center' }}>
+                <Button
+                  type="text"
+                  size="large"
+                  onClick={() => editRequirement(requirement.id)}
+                  icon={<EditOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+                />
+              </Col>
+              <Col span={1}>
+                <Button
+                  type="text"
+                  size="large"
+                  onClick={() => deleteRequirement(requirement.id)}
+                  icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+                />
+              </Col>
+            </>
+          )}
         </Row>
         <List
           dataSource={items}
