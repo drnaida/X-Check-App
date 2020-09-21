@@ -5,25 +5,7 @@ const getAll = async () => reviewRequestRepo.getAll();
 
 const getById = async reviewRequestId => reviewRequestRepo.getById(reviewRequestId);
 
-const createReviewRequest = async reqBody => {
-  const task = await taskRepo.getById(reqBody.taskId);
-  const review = {...reqBody, requirements: task.requirements.map(point => {
-      return {
-        title: point.title,
-        category: point.category,
-        items: point.items.map(subPoint => {
-          return {
-            description: subPoint.description,
-            score: subPoint.score,
-            selfMark: subPoint.selfMark,
-            marks: []
-          }
-        })
-      }
-    })};
-  await reviewRequestRepo.createReviewRequest(review);
-  return review
-};
+const createReviewRequest = async reqBody => reviewRequestRepo.createReviewRequest(reqBody);
 
 const updateReviewRequest = async (reviewRequestId, reqBody) => reviewRequestRepo.updateReviewRequest({id: reviewRequestId, ...reqBody});
 

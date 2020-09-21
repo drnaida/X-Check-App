@@ -37,11 +37,19 @@ router.route('/').post(
   reviewRequestBodyValidation(),
   catchErrors(async (req, res) => {
     const errors = validationResult(req);
+    const review = await reviewRequestService.getById(req.body.id);
+    if (review) {
+      throw new ErrorHandler(
+        BAD_REQUEST,
+        `Review with id ${req.body.id} already exists`
+      )
+    }
     if (!errors.isEmpty()) {
       throw new ErrorHandler(BAD_REQUEST, getStatusText(BAD_REQUEST));
     } else {
-      const updatedReview = await reviewRequestService.createReviewRequest(req.body);
-      await res.json(ReviewRequest.toResponse(updatedReview));
+      const newReview = new ReviewRequest(req.body);
+      await reviewRequestService.createReviewRequest(newReview);
+      await res.json(ReviewRequest.toResponse(newReview));
     }
   })
 )

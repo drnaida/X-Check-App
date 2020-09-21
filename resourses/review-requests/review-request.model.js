@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const uuid = require('uuid');
 
 const reviewRequestSchema = new mongoose.Schema({
   id: String,
@@ -19,10 +18,7 @@ const reviewRequestSchema = new mongoose.Schema({
     category: String,
     items: [
       {
-        id: {
-          type:String,
-          default: uuid.v1
-        },
+        id: String,
         description: String,
         score: Number,
         selfMark: Number,
