@@ -26,10 +26,11 @@ const taskBodyValidation = () => {
 
 const reviewRequestBodyValidation = () => {
   return [
-    check('task', 'task is not passed').exists(),
-    check('linkOnPr', 'linkOnPr is not passed').exists(),
-    check('linkOnTask', 'linkOnTask is not passed').exists(),
-    check('developer', 'developer is not passed').exists()
+    check('deployLink', 'deployLink is not passed').exists(),
+    check('student', 'student is not passed').exists(),
+    check('pullRequestLink', 'pullRequestLink is not passed').exists(),
+    check('taskId', 'taskId is not passed').exists(),
+    check('taskTitle', 'taskTitle is not passed').exists()
   ]
 }
 

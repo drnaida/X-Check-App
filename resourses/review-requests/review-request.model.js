@@ -1,61 +1,46 @@
 const mongoose = require('mongoose');
-
-const gradeItemSchema = new mongoose.Schema({
-  description: String,
-  maxScore: Number,
-  score: Number,
-  comment: String
-})
-
-const gradeSchema = new mongoose.Schema({
-  categories: [{
-    categoryTitle: String,
-    items: [gradeItemSchema]
-  }],
-})
-
-const selfGradeItemSchema = new mongoose.Schema({
-  description: String,
-  maxScore: Number,
-  score: Number
-})
-const selfGradeSchema = new mongoose.Schema({
-  categories: [{
-    categoryTitle: String,
-    items: [selfGradeItemSchema]
-  }]
-})
+const uuid = require('uuid');
 
 const reviewRequestSchema = new mongoose.Schema({
   id: String,
-  linkOnTask: String,
-  linkOnPr: String,
-  crossCheckSessionId: {
-    type: String,
-    default: null
-  },
-  developer: {
-    type: String,
-    default: null
-  },
-  task: String,
+  student: String,
+  pullRequestLink: String,
+  deployLink: String,
   state: {
     type: String,
     default: 'DRAFT'
   },
-  selfGrade: {
-    type: [selfGradeSchema],
-    default: undefined
-  },
-  grades: {
-    type: [gradeSchema],
-    default: undefined
-  }
+  taskId: String,
+  taskTitle: String,
+  categories: [String],
+  requirements: [{
+    id: String,
+    title: String,
+    category: String,
+    items: [
+      {
+        id: {
+          type:String,
+          default: uuid.v1
+        },
+        description: String,
+        score: Number,
+        selfMark: Number,
+        marks: [
+          {
+            examinerId: String,
+            mark: Number,
+            comment: String
+          }
+        ]
+      }
+    ]
+  }]
 });
 
 reviewRequestSchema.statics.toResponse = reviewRequest => {
-  const {id, linkOnTask, linkOnPr, crossCheckSessionId, title, developer, task, state, selfGrade, grades} = reviewRequest;
-  return {id, linkOnTask, linkOnPr, crossCheckSessionId, title, developer, task, state, selfGrade, grades}
+  const {id, student, pullRequestLink, deployLink, state, taskId, taskTitle, categories, requirements} = reviewRequest;
+  return {id, student, pullRequestLink, deployLink, state, taskId, taskTitle, categories, requirements}
 };
 
 const ReviewRequest = mongoose.model('ReviewRequest', reviewRequestSchema);
