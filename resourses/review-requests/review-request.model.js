@@ -11,6 +11,10 @@ const reviewRequestSchema = new mongoose.Schema({
   },
   taskId: String,
   taskTitle: String,
+  examiner: [{
+    id: String,
+    comment: String
+  }],
   categories: [String],
   requirements: [{
     id: String,
@@ -26,7 +30,13 @@ const reviewRequestSchema = new mongoose.Schema({
           {
             examinerId: String,
             mark: Number,
-            comment: String
+            comment: String,
+            dispute: {
+              comment: String,
+              id: String,
+              state: {type: String, default: null},
+              suggestedScore: Number
+            }
           }
         ]
       }
@@ -35,8 +45,8 @@ const reviewRequestSchema = new mongoose.Schema({
 });
 
 reviewRequestSchema.statics.toResponse = reviewRequest => {
-  const {id, student, pullRequestLink, deployLink, state, taskId, taskTitle, categories, requirements} = reviewRequest;
-  return {id, student, pullRequestLink, deployLink, state, taskId, taskTitle, categories, requirements}
+  const {id, student, pullRequestLink, deployLink, state, taskId, taskTitle, examiner, categories, requirements} = reviewRequest;
+  return {id, student, pullRequestLink, deployLink, state, taskId, taskTitle, examiner, categories, requirements}
 };
 
 const ReviewRequest = mongoose.model('ReviewRequest', reviewRequestSchema);
