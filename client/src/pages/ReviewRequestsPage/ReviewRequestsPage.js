@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { HeaderComponent } from '../../components/HeaderComponent';
 import { FooterComponent } from '../../components/FooterComponent';
 
-import { ReviewRequests } from './component/ReviewRequests';
+import { ReviewRequestsList } from './component/ReviewRequestsList';
 
 export const ReviewRequestsPage = () => {
   const { Content } = Layout;
@@ -13,7 +13,7 @@ export const ReviewRequestsPage = () => {
     <Layout>
       <HeaderComponent activeMenuItem="['3']" />
       <Content style={{ padding: '0 50px', marginTop: 90 }}>
-        <ReviewRequests />
+        <ReviewRequestsList />
       </Content>
       <FooterComponent />
     </Layout>

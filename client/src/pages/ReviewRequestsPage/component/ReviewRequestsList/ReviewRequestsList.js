@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 
@@ -9,57 +10,71 @@ import { CheckingYourself } from '../CheckingYourself';
 import createColumns from '../../Data/dataColumns';
 import { buttonsStepOne, buttonsStepTwo } from '../../Data/dataButtons';
 
-export const ReviewRequests = () => {
-  let formHandlerLink;
+export const ReviewRequestsList = () => {
   const [dataSource, setDataSource] = useState([
     {
       key: '1',
-      task: 'qMike1',
-      developer: 'AMike',
-      status: 'Draft',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
-      actionType: 'Check'
+      id: 'Task #1',
+      student: 'AMike',
+      state: 'Draft',
+      deployLink: '',
+      pullRequestLink: ''
     },
     {
       key: '2',
-      task: 'bNick2',
-      developer: 'DJohn',
-      status: 'Published',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
-      actionType: 'Edit'
+      id: 'Task #2',
+      student: 'DJohn',
+      state: 'Published',
+      deployLink: '',
+      pullRequestLink: ''
     },
     {
       key: '3',
-      task: 'zNick3',
-      developer: 'DJohn',
-      status: 'Completed',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
-      actionType: 'Edit'
+      id: 'Task #3',
+      student: 'DJohn',
+      state: 'Completed',
+      deployLink: '',
+      pullRequestLink: ''
     },
     {
       key: '4',
-      task: 'wNick2',
-      developer: 'DJohn',
-      status: 'Draft',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
-      actionType: 'Edit'
+      id: 'Task #3',
+      student: 'DJohn',
+      state: 'Draft',
+      deployLink: '',
+      pullRequestLink: ''
     }
   ]);
   const [visebleModalWindow, setVisibleModalWindow] = useState(false);
   const [step, setStep] = useState(1);
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
-  const [task, setTask] = useState({});
+  const [task, setTask] = useState([]);
+  const [editingPR, setEditingPR] = useState(-1);
+
+  const createFields = obj => {
+    const res = [];
+    for (const key in obj) {
+      if ({}.hasOwnProperty.call(obj, key)) {
+        res.push({ name: [key], value: obj[key] });
+      }
+    }
+    return res;
+  };
+
+  const restructingFields = () => {
+    const res = {};
+    for (let index = 0; index < task.length; index += 1) {
+      const elem = task[index];
+      res[elem.name[0]] = elem.value;
+    }
+    return res;
+  };
 
   const handleActionEdit = index => {
-    const state = [...dataSource];
-    const { actionType } = state[index];
-    state[index].actionType = actionType === 'Edit' ? 'Check' : 'Edit';
-    setDataSource(state);
+    setEditingPR(index);
+    setTask(createFields({ ...dataSource[index] }));
+    setVisibleModalWindow(true);
   };
 
   const handleActionDelete = index => {
@@ -81,39 +96,34 @@ export const ReviewRequests = () => {
   const handleCancelButtonModalWindow = () => {
     setVisibleModalWindow(false);
     setStep(1);
-    setTask({});
+    setTask([]);
+    setEditingPR(-1);
   };
 
-  const handleNextButtonModalWindow = () => {
-    formHandlerLink
-      .validateFields()
-      .then(values => {
-        setTask({ ...values });
-        setStep(step + 1);
-      })
-      .catch(info => {
-        console.log('Validate Failed:', info);
-      });
-  };
+  const handleOnChange = fields => setTask(fields);
+
+  const handleNextButtonModalWindow = () => setStep(step + 1);
 
   const handleSaveButtonModalWindow = published => {
-    const taskState = { ...task };
-    taskState.actionType = published ? 'Check' : 'Edit';
-    taskState.status = published ? 'Published' : 'Draft';
+    const taskState = restructingFields();
+    taskState.state = published ? 'Published' : 'Draft';
     const state = [...dataSource];
-    taskState.key = `${state.length + 1}`;
-    state.push(taskState);
+    if (editingPR > -1) {
+      const data = { ...state[editingPR] };
+      data.state = taskState.state;
+      data.deployLink = taskState.deployLink;
+      data.pullRequestLink = taskState.pullRequestLink;
+      state[editingPR] = data;
+    } else {
+      taskState.key = `${state.length + 1}`;
+      state.push(taskState);
+    }
     setDataSource(state);
-    setTask({});
     handleCancelButtonModalWindow();
   };
 
   const btnStepOne = buttonsStepOne(handleCancelButtonModalWindow, handleNextButtonModalWindow);
   const btnStepTwo = buttonsStepTwo(handleCancelButtonModalWindow, handleSaveButtonModalWindow);
-
-  const getFormHendler = formHandler => {
-    formHandlerLink = formHandler;
-  };
 
   const columns = createColumns(
     { handleActionEdit, handleActionDelete, handleActionCheck },
@@ -130,9 +140,9 @@ export const ReviewRequests = () => {
         handlerCancelButton={handleCancelButtonModalWindow}
       >
         {step === 1 ? (
-          <SelectingTask getFormHendler={getFormHendler} />
+          <SelectingTask fields={task} onChange={handleOnChange} />
         ) : (
-          <CheckingYourself getFormHendler={getFormHendler} />
+          <CheckingYourself />
         )}
       </ModalWindow>
       <Button

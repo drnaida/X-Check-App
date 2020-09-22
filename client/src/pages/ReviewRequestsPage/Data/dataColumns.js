@@ -87,7 +87,7 @@ const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
   });
 
   const renderActionButtons = record => {
-    const reviewRequestStatus = record.status.toUpperCase();
+    const reviewRequestStatus = record.state.toUpperCase();
     const index = Number(record.key) - 1;
     const classStyle = { fontSize: '20px', color: '#1890ff' };
     const editContent = <p>Edit this review request</p>;
@@ -131,24 +131,24 @@ const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
   return [
     {
       title: 'Task name',
-      dataIndex: 'task',
-      key: 'task',
+      dataIndex: 'id',
+      key: 'id',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'task'),
-      ...getColumnSearchProps('task')
+      sorter: (a, b) => sortStrings(a, b, 'id'),
+      ...getColumnSearchProps('id')
     },
     {
-      title: 'Developer',
-      dataIndex: 'developer',
-      key: 'developer',
+      title: 'Student',
+      dataIndex: 'student',
+      key: 'student',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'developer'),
-      ...getColumnSearchProps('developer')
+      sorter: (a, b) => sortStrings(a, b, 'student'),
+      ...getColumnSearchProps('student')
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'State',
+      dataIndex: 'state',
+      key: 'state',
       filters: [
         {
           text: 'Draft',
@@ -163,7 +163,7 @@ const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
           value: 'COMPLETED'
         }
       ],
-      onFilter: (value, record) => record.status.toUpperCase().indexOf(value) === 0
+      onFilter: (value, record) => record.state.toUpperCase().indexOf(value) === 0
     },
     {
       title: 'Action',
