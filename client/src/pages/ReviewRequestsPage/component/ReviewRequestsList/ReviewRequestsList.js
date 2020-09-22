@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 
@@ -52,24 +51,10 @@ export const ReviewRequestsList = () => {
   const [task, setTask] = useState([]);
   const [editingPR, setEditingPR] = useState(-1);
 
-  const createFields = obj => {
-    const res = [];
-    for (const key in obj) {
-      if ({}.hasOwnProperty.call(obj, key)) {
-        res.push({ name: [key], value: obj[key] });
-      }
-    }
-    return res;
-  };
-
-  const restructingFields = () => {
-    const res = {};
-    for (let index = 0; index < task.length; index += 1) {
-      const elem = task[index];
-      res[elem.name[0]] = elem.value;
-    }
-    return res;
-  };
+  const createFields = obj =>
+    Object.entries(obj).map(elem => {
+      return { name: [elem[0]], value: elem[1] };
+    });
 
   const handleActionEdit = index => {
     setEditingPR(index);
@@ -105,7 +90,10 @@ export const ReviewRequestsList = () => {
   const handleNextButtonModalWindow = () => setStep(step + 1);
 
   const handleSaveButtonModalWindow = published => {
-    const taskState = restructingFields();
+    const taskState = task.reduce((result, current) => {
+      result[current.name[0]] = current.value;
+      return result;
+    }, {});
     taskState.state = published ? 'Published' : 'Draft';
     const state = [...dataSource];
     if (editingPR > -1) {
