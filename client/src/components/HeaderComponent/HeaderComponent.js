@@ -16,10 +16,13 @@ export const HeaderComponent = props => {
   return (
     <Header style={{ position: 'absolute', zIndex: 1, width: '100%' }}>
       <Row justify="space-between">
-        <Col span={3} style={{ textAlign: 'center', color: '#fff' }}>
+        <Col
+          span={3}
+          style={{ textAlign: 'center', color: '#fff', height: '64px', overflow: 'hidden' }}
+        >
           <Logo />
         </Col>
-        <Col span={18}>
+        <Col span={18} style={{ height: '64px', overflow: 'hidden' }}>
           <MenuComponent activeMenuItem={activeMenuItem} />
         </Col>
         <Col
@@ -28,7 +31,9 @@ export const HeaderComponent = props => {
             textAlign: 'right',
             color: '#fff',
             textTransform: 'capitalize',
-            cursor: 'default'
+            cursor: 'default',
+            height: '64px',
+            overflow: 'hidden'
           }}
         >
           <User auth={auth} />
