@@ -2,15 +2,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, EditOutlined, CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
-import { Button, Input, Space } from 'antd';
+import { Button, Input, Space, Popover } from 'antd';
 
-const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
+const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
   let searchInput;
 
   const { searchText, setSearchText } = searchTextObj;
   const { searchedColumn, setSearchedColumn } = searchedColumnObj;
+  const { handleActionEdit, handleActionDelete, handleActionCheck } = handleActions;
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -85,27 +86,69 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
       )
   });
 
+  const renderActionButtons = record => {
+    const reviewRequestStatus = record.state.toUpperCase();
+    const index = Number(record.key) - 1;
+    const classStyle = { fontSize: '20px', color: '#1890ff' };
+    const editContent = <p>Edit this review request</p>;
+    const deleteContent = <p>Delete this review request</p>;
+    const CheckContent = <p>Check this review request</p>;
+
+    if (reviewRequestStatus === 'DRAFT') {
+      return (
+        <Space>
+          <Popover title="Edit" content={editContent}>
+            <Button
+              onClick={() => handleActionEdit(index)}
+              type="text"
+              icon={<EditOutlined style={classStyle} />}
+            />
+          </Popover>
+          <Popover title="Delete" content={deleteContent}>
+            <Button
+              onClick={() => handleActionDelete(index)}
+              type="text"
+              icon={<DeleteOutlined style={classStyle} />}
+            />
+          </Popover>
+        </Space>
+      );
+    }
+    if (reviewRequestStatus === 'PUBLISHED') {
+      return (
+        <Popover title="Check" content={CheckContent}>
+          <Button
+            onClick={() => handleActionCheck(index)}
+            type="text"
+            icon={<CheckOutlined style={classStyle} />}
+          />
+        </Popover>
+      );
+    }
+    return null;
+  };
+
   return [
     {
       title: 'Task name',
-      dataIndex: 'task',
-      key: 'task',
+      dataIndex: 'id',
+      key: 'id',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'task'),
-      ...getColumnSearchProps('task')
+      sorter: (a, b) => sortStrings(a, b, 'id'),
+      ...getColumnSearchProps('id')
     },
     {
-      title: 'Developer',
-      dataIndex: 'developer',
-      key: 'developer',
+      title: 'Student',
+      dataIndex: 'student',
+      key: 'student',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'developer'),
-      ...getColumnSearchProps('developer')
+      sorter: (a, b) => sortStrings(a, b, 'student'),
+      ...getColumnSearchProps('student')
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'State',
+      dataIndex: 'state',
+      key: 'state',
       filters: [
         {
           text: 'Draft',
@@ -120,24 +163,15 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
           value: 'COMPLETED'
         }
       ],
-      onFilter: (value, record) => record.status.toUpperCase().indexOf(value) === 0
+      onFilter: (value, record) => record.state.toUpperCase().indexOf(value) === 0
     },
     {
       title: 'Action',
       dataIndex: 'action',
       key: 'action',
-      render: (_text, record, index) => (
-        <a
-          tabIndex={index}
-          role="button"
-          onKeyPress={() => handleClickAction(index)}
-          onClick={() => handleClickAction(index)}
-        >
-          {record.actionType}
-        </a>
-      )
+      render: (_text, record) => renderActionButtons(record)
     }
   ];
 };
 
-export default createColomns;
+export default createColumns;

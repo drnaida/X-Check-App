@@ -1,114 +1,21 @@
-import React, { useState } from 'react';
-import { Button, Table } from 'antd';
+import React from 'react';
+import { Layout } from 'antd';
 
-import { ModalWindow } from '../../components/ModalWindow';
+import { HeaderComponent } from '../../components/HeaderComponent';
+import { FooterComponent } from '../../components/FooterComponent';
 
-import { SelectingTask } from './component/SelectingTask';
-import { CheckingYourself } from './component/CheckingYourself';
-import createColomns from './Data/dataColomns';
-import { buttonsStepOne, buttonsStepTwo } from './Data/dataButtons';
+import { ReviewRequestsList } from './component/ReviewRequestsList';
 
 export const ReviewRequestsPage = () => {
-  let formHandlerLink;
-
-  const [dataSource, setActionType] = useState([
-    {
-      key: '1',
-      task: 'qMike',
-      developer: 'AMike',
-      status: 'Draft',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
-      actionType: 'Check'
-    },
-    {
-      key: '2',
-      task: 'Nick',
-      developer: 'DJohn',
-      status: 'Published',
-      linkOnTheTaskSolution: '',
-      linkOnThePullRequest: '',
-      actionType: 'Edit'
-    }
-  ]);
-  const [visebleModalWindow, setVisibleModalWindow] = useState(false);
-  const [step, setStep] = useState(1);
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
-  const [task, setTask] = useState({});
-
-  const handleClickAction = index => {
-    const state = [...dataSource];
-    const { actionType } = state[index];
-    state[index].actionType = actionType === 'Edit' ? 'Check' : 'Edit';
-    setActionType(state);
-  };
-
-  const handleCancelButtonModalWindow = () => {
-    setVisibleModalWindow(false);
-    setStep(1);
-    setTask({});
-  };
-
-  const handleNextButtonModalWindow = () => {
-    formHandlerLink
-      .validateFields()
-      .then(values => {
-        setTask({ ...values });
-        setStep(step + 1);
-      })
-      .catch(info => {
-        console.log('Validate Failed:', info);
-      });
-  };
-
-  const handleSaveButtonModalWindow = published => {
-    const taskState = { ...task };
-    taskState.actionType = published ? 'Check' : 'Edit';
-    taskState.status = published ? 'Published' : 'Draft';
-    const state = [...dataSource];
-    taskState.key = `${state.length + 1}`;
-    state.push(taskState);
-    setActionType(state);
-    setTask({});
-    handleCancelButtonModalWindow();
-  };
-
-  const btnStepOne = buttonsStepOne(handleCancelButtonModalWindow, handleNextButtonModalWindow);
-  const btnStepTwo = buttonsStepTwo(handleCancelButtonModalWindow, handleSaveButtonModalWindow);
-
-  const getFormHendler = formHandler => {
-    formHandlerLink = formHandler;
-  };
-
-  const columns = createColomns(
-    handleClickAction,
-    { searchText, setSearchText },
-    { searchedColumn, setSearchedColumn }
-  );
+  const { Content } = Layout;
 
   return (
-    <>
-      <ModalWindow
-        title="Creating new rewiew request"
-        visible={visebleModalWindow}
-        buttons={step === 1 ? btnStepOne : btnStepTwo}
-        handlerCancelButton={handleCancelButtonModalWindow}
-      >
-        {step === 1 ? (
-          <SelectingTask getFormHendler={getFormHendler} />
-        ) : (
-          <CheckingYourself getFormHendler={getFormHendler} />
-        )}
-      </ModalWindow>
-      <Button
-        type="primary"
-        onClick={() => setVisibleModalWindow(true)}
-        style={{ marginBottom: '20px' }}
-      >
-        Create request
-      </Button>
-      <Table dataSource={dataSource} columns={columns} />
-    </>
+    <Layout>
+      <HeaderComponent activeMenuItem="['3']" />
+      <Content style={{ padding: '0 50px', marginTop: 90 }}>
+        <ReviewRequestsList />
+      </Content>
+      <FooterComponent />
+    </Layout>
   );
 };
