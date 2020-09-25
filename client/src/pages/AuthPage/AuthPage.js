@@ -19,7 +19,7 @@ export const AuthPage = () => {
 
   const login = async formValues => {
     const data = await request('/auth/login', 'POST', { ...formValues });
-    auth.login(data.token, data.githubId, data.roles);
+    auth.login(data.token, data.refreshToken, data.githubId, data.roles);
   };
 
   const register = async formValues => {

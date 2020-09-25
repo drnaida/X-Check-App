@@ -3,6 +3,7 @@ import React from 'react';
 import { Menu } from 'antd';
 
 import { menuItems } from '../../constants';
+import { Link } from 'react-router-dom';
 
 export const MenuComponent = props => {
   const { activeMenuItem } = props;
@@ -12,7 +13,7 @@ export const MenuComponent = props => {
       {menuItems.map(item => {
         return (
           <Menu.Item key={item.title}>
-            <a href={item.url}>{item.title}</a>
+            <Link to={item.url}>{item.title}</Link>
           </Menu.Item>
         );
       })}

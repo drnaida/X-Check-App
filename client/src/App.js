@@ -6,8 +6,9 @@ import { createStore } from 'redux';
 
 import { useRoutes } from './routes';
 import rootReducer from './store/reducers';
-import { useAuth } from './hooks/auth.hook';
+import { useAuth } from './hooks';
 import { AuthContext } from './context/AuthContext';
+import { useToken } from './hooks/token.hook';
 // IMPORT FUNCTION OF GETTING DATA FROM DATABASE //
 // import { getTasks } from "./services/tasksService";
 
@@ -18,9 +19,11 @@ const store = createStore(
 );
 
 function App() {
-  const { token, githubId, roles, login, logout } = useAuth();
-  const isAuthenticated = !!token;
+  const { token, refreshToken, githubId, roles, login, logout } = useAuth();
+  const { checkIsTokenExpires } = useToken();
+  const isAuthenticated = token && !checkIsTokenExpires(token);
   const routes = useRoutes(isAuthenticated);
+  // const location = useLocation();
   // 'useDispatch' SHOULD BE IMPORTED FROM 'react-redux' //
   //--------------------------------
   // const dispatch = useDispatch();
@@ -32,13 +35,14 @@ function App() {
       // const tasksResponse = await getTasks();
       // dispatch(setTasks(tasksResponse));
     }
-
     fetchData();
   }, []);
 
   return (
     <Provider store={store}>
-      <AuthContext.Provider value={{ token, githubId, roles, login, logout, isAuthenticated }}>
+      <AuthContext.Provider
+        value={{ token, refreshToken, githubId, roles, login, logout, isAuthenticated }}
+      >
         <Router>
           <div>{routes}</div>
         </Router>
