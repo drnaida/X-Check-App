@@ -2,11 +2,19 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react';
-import { SearchOutlined } from '@ant-design/icons';
-import Highlighter from 'react-highlight-words';
-import { Button, Input, Space } from 'antd';
 
-const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
+import Highlighter from 'react-highlight-words';
+
+import { Button, Input, Space } from 'antd';
+import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+
+export const createColomns = (
+  githubId,
+  editReviewRequestHandler,
+  deleteReviewRequestHandler,
+  searchTextObj,
+  searchedColumnObj
+) => {
   let searchInput;
 
   const { searchText, setSearchText } = searchTextObj;
@@ -88,24 +96,24 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
   return [
     {
       title: 'Task name',
-      dataIndex: 'task',
-      key: 'task',
+      dataIndex: 'taskTitle',
+      key: 'taskTitle',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'task'),
-      ...getColumnSearchProps('task')
+      sorter: (a, b) => sortStrings(a, b, 'taskTitle'),
+      ...getColumnSearchProps('taskTitle')
     },
     {
-      title: 'Developer',
-      dataIndex: 'developer',
-      key: 'developer',
+      title: 'Student',
+      dataIndex: 'student',
+      key: 'student',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'developer'),
-      ...getColumnSearchProps('developer')
+      sorter: (a, b) => sortStrings(a, b, 'student'),
+      ...getColumnSearchProps('student')
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'State',
+      dataIndex: 'state',
+      key: 'state',
       filters: [
         {
           text: 'Draft',
@@ -120,24 +128,40 @@ const createColomns = (handleClickAction, searchTextObj, searchedColumnObj) => {
           value: 'COMPLETED'
         }
       ],
-      onFilter: (value, record) => record.status.toUpperCase().indexOf(value) === 0
+      onFilter: (value, record) => record.state.toUpperCase().indexOf(value) === 0
     },
     {
       title: 'Action',
       dataIndex: 'action',
       key: 'action',
-      render: (_text, record, index) => (
-        <a
-          tabIndex={index}
-          role="button"
-          onKeyPress={() => handleClickAction(index)}
-          onClick={() => handleClickAction(index)}
-        >
-          {record.actionType}
-        </a>
-      )
+      render: (_text, record) =>
+        record.student === githubId && record.state === 'DRAFT' ? (
+          <>
+            <Button
+              type="text"
+              size="large"
+              onClick={() => editReviewRequestHandler(record.id)}
+              icon={<EditOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+            />
+            <Button
+              type="text"
+              size="large"
+              onClick={() => deleteReviewRequestHandler(record.id)}
+              icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+            />
+          </>
+        ) : (
+          record.student !== githubId && (
+            <Button
+              type="default"
+              size="midle"
+              onClick={() => null}
+              style={{ color: '#40A9FF', borderColor: '#40A9FF' }}
+            >
+              Check
+            </Button>
+          )
+        )
     }
   ];
 };
-
-export default createColomns;
