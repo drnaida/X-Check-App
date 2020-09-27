@@ -16,10 +16,11 @@
   - can look through the tasks
   - create, edit and delete review requests
   - check review request of other users
-  - look through review result and disput it
+  - look through the review result and dispute it
 * author, superviser, course manager:
   - have all privileges like a student
   - plus can create, edit and delete new tasks
   - create cross-check sessions
 
 User role can be selected during the registration
+You can select several roles at once
