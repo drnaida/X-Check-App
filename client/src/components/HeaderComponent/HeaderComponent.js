@@ -12,7 +12,8 @@ const { Header } = Layout;
 
 export const HeaderComponent = props => {
   const { activeMenuItem } = props;
-  const auth = useContext(AuthContext);
+  const { roles, githubId } = useContext(AuthContext);
+
   return (
     <Header style={{ position: 'absolute', zIndex: 1, width: '100%' }}>
       <Row justify="space-between">
@@ -23,7 +24,7 @@ export const HeaderComponent = props => {
           <Logo />
         </Col>
         <Col span={18} style={{ height: '64px', overflow: 'hidden' }}>
-          <MenuComponent activeMenuItem={activeMenuItem} />
+          <MenuComponent activeMenuItem={activeMenuItem} roles={roles} />
         </Col>
         <Col
           span={3}
@@ -36,7 +37,7 @@ export const HeaderComponent = props => {
             overflow: 'hidden'
           }}
         >
-          <User auth={auth} />
+          <User roles={roles} githubId={githubId} />
         </Col>
       </Row>
     </Header>
