@@ -2,16 +2,23 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react';
-import { SearchOutlined, EditOutlined, CheckOutlined, DeleteOutlined } from '@ant-design/icons';
-import Highlighter from 'react-highlight-words';
-import { Button, Input, Space, Popover } from 'antd';
 
-const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
+import Highlighter from 'react-highlight-words';
+
+import { Button, Input, Space } from 'antd';
+import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+
+export const createColomns = (
+  githubId,
+  editReviewRequestHandler,
+  deleteReviewRequestHandler,
+  searchTextObj,
+  searchedColumnObj
+) => {
   let searchInput;
 
   const { searchText, setSearchText } = searchTextObj;
   const { searchedColumn, setSearchedColumn } = searchedColumnObj;
-  const { handleActionEdit, handleActionDelete, handleActionCheck } = handleActions;
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -86,56 +93,14 @@ const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
       )
   });
 
-  const renderActionButtons = record => {
-    const reviewRequestStatus = record.state.toUpperCase();
-    const index = Number(record.key) - 1;
-    const classStyle = { fontSize: '20px', color: '#1890ff' };
-    const editContent = <p>Edit this review request</p>;
-    const deleteContent = <p>Delete this review request</p>;
-    const CheckContent = <p>Check this review request</p>;
-
-    if (reviewRequestStatus === 'DRAFT') {
-      return (
-        <Space>
-          <Popover title="Edit" content={editContent}>
-            <Button
-              onClick={() => handleActionEdit(index)}
-              type="text"
-              icon={<EditOutlined style={classStyle} />}
-            />
-          </Popover>
-          <Popover title="Delete" content={deleteContent}>
-            <Button
-              onClick={() => handleActionDelete(index)}
-              type="text"
-              icon={<DeleteOutlined style={classStyle} />}
-            />
-          </Popover>
-        </Space>
-      );
-    }
-    if (reviewRequestStatus === 'PUBLISHED') {
-      return (
-        <Popover title="Check" content={CheckContent}>
-          <Button
-            onClick={() => handleActionCheck(index)}
-            type="text"
-            icon={<CheckOutlined style={classStyle} />}
-          />
-        </Popover>
-      );
-    }
-    return null;
-  };
-
   return [
     {
       title: 'Task name',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'taskTitle',
+      key: 'taskTitle',
       sortDirections: ['descend', 'ascend'],
-      sorter: (a, b) => sortStrings(a, b, 'id'),
-      ...getColumnSearchProps('id')
+      sorter: (a, b) => sortStrings(a, b, 'taskTitle'),
+      ...getColumnSearchProps('taskTitle')
     },
     {
       title: 'Student',
@@ -169,9 +134,34 @@ const createColumns = (handleActions, searchTextObj, searchedColumnObj) => {
       title: 'Action',
       dataIndex: 'action',
       key: 'action',
-      render: (_text, record) => renderActionButtons(record)
+      render: (_text, record) =>
+        record.student === githubId && record.state === 'DRAFT' ? (
+          <>
+            <Button
+              type="text"
+              size="large"
+              onClick={() => editReviewRequestHandler(record.id)}
+              icon={<EditOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+            />
+            <Button
+              type="text"
+              size="large"
+              onClick={() => deleteReviewRequestHandler(record.id)}
+              icon={<DeleteOutlined style={{ fontSize: '20px', color: '#595959' }} />}
+            />
+          </>
+        ) : (
+          record.student !== githubId && (
+            <Button
+              type="default"
+              size="midle"
+              onClick={() => null}
+              style={{ color: '#40A9FF', borderColor: '#40A9FF' }}
+            >
+              Check
+            </Button>
+          )
+        )
     }
   ];
 };
-
-export default createColumns;

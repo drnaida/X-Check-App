@@ -10,6 +10,7 @@ export const ModalWindow = props => {
     handlerOkButton,
     handlerCancelButton,
     children,
+    width = '90%',
     height = '90vh',
     buttons = []
   } = props;
@@ -19,7 +20,7 @@ export const ModalWindow = props => {
         title={title}
         visible={visible}
         centered
-        width="90%"
+        width={width}
         style={{ height }}
         onCancel={handlerCancelButton}
         footer={buttons}
@@ -33,7 +34,7 @@ export const ModalWindow = props => {
       title={title}
       visible={visible}
       centered
-      width="90%"
+      width={width}
       style={{ height }}
       okText="Save"
       onOk={handlerOkButton}

@@ -22,7 +22,7 @@ const taskBodyValidation = () => {
     check('categories', 'categories is not passed').exists(),
     check('requirements', 'requirements is not passed').exists()
   ]
-}
+};
 
 const reviewRequestBodyValidation = () => {
   return [

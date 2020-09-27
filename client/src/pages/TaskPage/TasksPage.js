@@ -12,10 +12,13 @@ import createColomns from './Data/dataColomns';
 export const TasksPage = () => {
   const { Content } = Layout;
   const { request } = useHttp();
-  const { token } = useContext(AuthContext);
+  const { token, githubId } = useContext(AuthContext);
   const [taskList, setTaskList] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
+  const fileredtaskList = taskList.filter(
+    listItem => listItem.state === 'PUBLISHED' || listItem.author === githubId
+  );
 
   const deleteTaskHandler = async id => {
     const res = await deleteTask(id, request, token);
@@ -37,6 +40,7 @@ export const TasksPage = () => {
       });
     }
   };
+
   const columns = createColomns(
     deleteTaskHandler,
     { searchText, setSearchText },
@@ -61,7 +65,7 @@ export const TasksPage = () => {
         </Row>
         <Row>
           <Col span={24}>
-            <Table dataSource={taskList} columns={columns} />
+            <Table dataSource={fileredtaskList} columns={columns} rowKey={record => record.id} />
           </Col>
         </Row>
       </Content>

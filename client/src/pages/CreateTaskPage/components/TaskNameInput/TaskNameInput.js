@@ -18,7 +18,10 @@ export const TaskNameInput = ({ title, isDisabled }) => {
 
   return (
     <div>
-      <label>Title</label>
+      <label>
+        Title
+        <sup style={{ color: '#FF4D4F' }}>*</sup>
+      </label>
       <Input
         id="taskName"
         type="text"

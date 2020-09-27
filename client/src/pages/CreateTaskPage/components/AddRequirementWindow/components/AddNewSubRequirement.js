@@ -24,7 +24,10 @@ export const AddNewSubRequirement = ({
   return (
     <Row gutter={[50, 40]}>
       <Col span={12}>
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">
+          Description
+          <sup style={{ color: '#FF4D4F' }}>*</sup>
+        </label>
         <Textarea
           id="description"
           placeholder="Enter item description"

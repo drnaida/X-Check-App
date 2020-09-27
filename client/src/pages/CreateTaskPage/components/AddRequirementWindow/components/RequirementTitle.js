@@ -6,12 +6,11 @@ import { Input } from 'antd';
 export const RequirementTitle = ({ title, changeTitle }) => {
   return (
     <div>
-      <label htmlFor="title" className="Requirement__title--label">
+      <label className="Requirement__title--label">
         Title
+        <sup style={{ color: '#FF4D4F' }}>*</sup>
       </label>
       <Input
-        id="title"
-        name="title"
         placeholder="Enter requirement title"
         size="large"
         value={title}

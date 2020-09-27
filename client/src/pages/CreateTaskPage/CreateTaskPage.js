@@ -239,7 +239,6 @@ export const CreateTaskPage = () => {
       if (taskId) {
         res = await editTask(taskId, task, request, token);
       } else {
-        console.log(task);
         task.id = uuidv4();
         task.author = githubId;
         res = await addTask(task, request, token);
