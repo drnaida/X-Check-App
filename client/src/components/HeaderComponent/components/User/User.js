@@ -6,7 +6,7 @@ import { Tooltip, Button } from 'antd';
 
 import { useAuth } from '../../../../hooks';
 
-export const User = ({ auth }) => {
+export const User = ({ roles, githubId }) => {
   const { logout } = useAuth();
 
   const logoutHandler = () => {
@@ -16,7 +16,7 @@ export const User = ({ auth }) => {
 
   return (
     <div>
-      <Tooltip title={auth.roles ? auth.roles.join(', ') : ''}>{auth.githubId}</Tooltip>
+      <Tooltip title={roles ? roles.join(', ') : ''}>{githubId}</Tooltip>
       <Button type="link" style={{ color: '#FFFFFF' }} onClick={logoutHandler}>
         Logout
       </Button>

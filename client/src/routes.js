@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import { AuthPage, TasksPage, CreateTaskPage, ReviewRequestsPage, CrossCheck } from './pages';
 
-export const useRoutes = isAuthenticated => {
+export const useRoutes = (isAuthenticated, roles) => {
   if (isAuthenticated) {
     return (
       <Switch>
@@ -13,15 +13,19 @@ export const useRoutes = isAuthenticated => {
         <Route path="/review-requests">
           <ReviewRequestsPage />
         </Route>
-        <Route exact path="/create-task">
-          <CreateTaskPage />
-        </Route>
+        {roles && !roles.every(item => item === 'student') && (
+          <Route exact path="/create-task">
+            <CreateTaskPage />
+          </Route>
+        )}
         <Route path="/create-task/:id">
           <CreateTaskPage />
         </Route>
-        <Route path="/cross-check">
-          <CrossCheck />
-        </Route>
+        {roles && !roles.every(item => item === 'student') && (
+          <Route path="/cross-check">
+            <CrossCheck />
+          </Route>
+        )}
         <Redirect to="/tasks" />
       </Switch>
     );
