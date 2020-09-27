@@ -2,8 +2,9 @@
 import React from 'react';
 import { Menu } from 'antd';
 
-import { menuItems } from '../../constants';
 import { Link } from 'react-router-dom';
+
+import { menuItems } from '../../constants';
 
 export const MenuComponent = props => {
   const { activeMenuItem } = props;

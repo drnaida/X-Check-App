@@ -1,22 +1,12 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
-import {
-  AuthPage,
-  HomePage,
-  TasksPage,
-  CreateTaskPage,
-  ReviewRequestsPage,
-  CrossCheck
-} from './pages';
+import { AuthPage, TasksPage, CreateTaskPage, ReviewRequestsPage, CrossCheck } from './pages';
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/home">
-          <HomePage />
-        </Route>
         <Route path="/tasks">
           <TasksPage />
         </Route>
@@ -32,7 +22,7 @@ export const useRoutes = isAuthenticated => {
         <Route path="/cross-check">
           <CrossCheck />
         </Route>
-        <Redirect to="/home" />
+        <Redirect to="/tasks" />
       </Switch>
     );
   }
