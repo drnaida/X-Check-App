@@ -10,8 +10,17 @@ const loginRouter = require('./resourses/authentication/login.router');
 const userRouter = require('./resourses/users/user.router');
 const taskRouter = require('./resourses/tasks/task.router');
 const reviewRouter = require('./resourses/review-requests/review-request.router');
+const PORT = process.env.PORT;
 
 app.use(express.json({extended: true}));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build/'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
 app.use(requestLoggerMiddleware);
 

@@ -30,3 +30,271 @@ ReferenceError: checkToken is not defined
     at Function.Module._load (internal/modules/cjs/loader.js:879:14)
     at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
     at internal/main/run_main_module.js:17:47
+[31m[31merror[31m[39m:   uncaughtException: req is not defined
+ReferenceError: req is not defined
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\resourses\authentication\login.router.js:50:31)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:9:21)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\server.js:2:13)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+[31m[31merror[31m[39m:   uncaughtException: req is not defined
+ReferenceError: req is not defined
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\resourses\authentication\login.router.js:51:31)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:9:21)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\server.js:2:13)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+Error: Cannot find module '/common/config'
+Require stack:
+- D:\rss\x-check app\X-Check-App\app.js
+- D:\rss\x-check app\X-Check-App\server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:966:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:842:27)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:8:20)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+[31m[31merror[31m[39m:   uncaughtException: app.use() requires a middleware function
+TypeError: app.use() requires a middleware function
+    at Function.use (D:\rss\x-check app\X-Check-App\node_modules\express\lib\application.js:210:11)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:18:7)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\server.js:2:13)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    at internal/main/run_main_module.js:17:47
+[31m[31merror[31m[39m:   uncaughtException: root path required
+TypeError: root path required
+    at Function.serveStatic [as static] (D:\rss\x-check app\X-Check-App\node_modules\serve-static\index.js:40:11)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:18:19)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\server.js:2:13)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    at internal/main/run_main_module.js:17:47
+[31m[31merror[31m[39m:   uncaughtException: Cannot read property 'length' of undefined
+TypeError: Cannot read property 'length' of undefined
+    at pathtoRegexp (D:\rss\x-check app\X-Check-App\node_modules\path-to-regexp\index.js:63:49)
+    at new Layer (D:\rss\x-check app\X-Check-App\node_modules\express\lib\router\layer.js:45:17)
+    at Function.route (D:\rss\x-check app\X-Check-App\node_modules\express\lib\router\index.js:494:15)
+    at Function.app.<computed> [as get] (D:\rss\x-check app\X-Check-App\node_modules\express\lib\application.js:481:30)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\app.js:20:7)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\rss\x-check app\X-Check-App\server.js:2:13)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+[31m[31merror[31m[39m:   uncaughtException: listen EADDRINUSE: address already in use :::5000
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1313:16)
+    at listenInCluster (net.js:1361:12)
+    at Server.listen (net.js:1447:7)
+    at Function.listen (D:\rss\x-check app\X-Check-App\node_modules\express\lib\application.js:618:24)
+    at D:\rss\x-check app\X-Check-App\server.js:14:9
+    at NativeConnection.<anonymous> (D:\rss\x-check app\X-Check-App\database\db.client.js:13:5)
+    at Object.onceWrapper (events.js:421:28)
+    at NativeConnection.emit (events.js:315:20)
+    at _setClient (D:\rss\x-check app\X-Check-App\node_modules\mongoose\lib\connection.js:947:8)
+    at D:\rss\x-check app\X-Check-App\node_modules\mongoose\lib\connection.js:794:7
+    at D:\rss\x-check app\X-Check-App\node_modules\mongodb\lib\utils.js:674:5
+    at D:\rss\x-check app\X-Check-App\node_modules\mongodb\lib\mongo_client.js:225:7
+    at connectCallback (D:\rss\x-check app\X-Check-App\node_modules\mongodb\lib\operations\connect.js:366:5)
+    at D:\rss\x-check app\X-Check-App\node_modules\mongodb\lib\operations\connect.js:602:5
+    at connectHandler (D:\rss\x-check app\X-Check-App\node_modules\mongodb\lib\core\sdam\topology.js:297:43)
+    at cb (D:\rss\x-check app\X-Check-App\node_modules\mongodb\lib\core\sdam\topology.js:681:26)

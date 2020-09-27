@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const {MONGO_CONNECTION_STRING} = require('../common/config');
 
 module.exports = callback => {
-  mongoose.connect(MONGO_CONNECTION_STRING, {
+  mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
