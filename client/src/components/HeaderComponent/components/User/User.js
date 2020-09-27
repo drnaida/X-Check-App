@@ -3,10 +3,10 @@ import React from 'react';
 
 import { Tooltip } from 'antd';
 
-export const User = ({ auth }) => {
+export const User = ({ roles, githubId }) => {
   return (
     <div>
-      <Tooltip title={auth.roles ? auth.roles.join(', ') : ''}>{auth.githubId}</Tooltip>
+      <Tooltip title={roles ? roles.join(', ') : ''}>{githubId}</Tooltip>
     </div>
   );
 };

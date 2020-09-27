@@ -22,7 +22,7 @@ function App() {
   const { token, refreshToken, githubId, roles, login, logout } = useAuth();
   const { checkIsTokenExpires } = useToken();
   const isAuthenticated = token && !checkIsTokenExpires(token);
-  const routes = useRoutes(isAuthenticated);
+  const routes = useRoutes(isAuthenticated, roles);
   // const location = useLocation();
   // 'useDispatch' SHOULD BE IMPORTED FROM 'react-redux' //
   //--------------------------------
