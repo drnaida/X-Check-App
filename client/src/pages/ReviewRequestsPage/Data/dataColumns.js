@@ -12,6 +12,7 @@ export const createColumns = (
   githubId,
   editReviewRequestHandler,
   deleteReviewRequestHandler,
+  checkReviewRequest,
   searchTextObj,
   searchedColumnObj
 ) => {
@@ -155,7 +156,7 @@ export const createColumns = (
             <Button
               type="default"
               size="midle"
-              onClick={() => null}
+              onClick={() => checkReviewRequest(record.id)}
               style={{ color: '#40A9FF', borderColor: '#40A9FF' }}
             >
               Check

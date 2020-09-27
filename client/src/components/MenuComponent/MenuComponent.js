@@ -1,16 +1,20 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {Menu} from 'antd';
+import { Menu } from 'antd';
 
-import {menuItems} from '../../constants';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const MenuComponent = ({activeMenuItem, roles}) => {
+import { menuItems } from '../../constants';
 
+export const MenuComponent = ({ activeMenuItem, roles }) => {
   return (
     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={activeMenuItem}>
       {menuItems
-        .filter(item => roles && roles.every(role => role === 'student') ? item.url !== '/create-task' && item.url !== '/cross-check' : item)
+        .filter(item =>
+          roles && roles.every(role => role === 'student')
+            ? item.url !== '/create-task' && item.url !== '/cross-check'
+            : item
+        )
         .map(item => {
           return (
             <Menu.Item key={item.title}>

@@ -1,50 +1,41 @@
 import React from 'react';
-import {Switch, Route, Redirect} from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 
-import {
-  AuthPage,
-  HomePage,
-  TasksPage,
-  CreateTaskPage,
-  ReviewRequestsPage,
-  CrossCheck
-} from './pages';
+import { AuthPage, TasksPage, CreateTaskPage, ReviewRequestsPage, CrossCheck } from './pages';
 
 export const useRoutes = (isAuthenticated, roles) => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/home">
-          <HomePage/>
-        </Route>
         <Route path="/tasks">
-          <TasksPage/>
+          <TasksPage />
         </Route>
         <Route path="/review-requests">
-          <ReviewRequestsPage/>
+          <ReviewRequestsPage />
         </Route>
         {roles && !roles.every(item => item === 'student') && (
           <Route exact path="/create-task">
-            <CreateTaskPage/>
+            <CreateTaskPage />
           </Route>
         )}
         <Route path="/create-task/:id">
-          <CreateTaskPage/>
+          <CreateTaskPage />
         </Route>
         {roles && !roles.every(item => item === 'student') && (
           <Route path="/cross-check">
-            <CrossCheck/>
-          </Route>)}
-        <Redirect to="/home"/>
+            <CrossCheck />
+          </Route>
+        )}
+        <Redirect to="/tasks" />
       </Switch>
     );
   }
   return (
     <Switch>
       <Route path="/">
-        <AuthPage/>
+        <AuthPage />
       </Route>
-      <Redirect to="/"/>
+      <Redirect to="/" />
     </Switch>
   );
 };

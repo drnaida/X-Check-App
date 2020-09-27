@@ -4,7 +4,9 @@ import {
   ADD_TASK_TITLE,
   ADD_TASK_SOLUTION_LINK,
   ADD_PULL_REQUEST_LINK,
-  ADD_SELF_MARK
+  ADD_SELF_MARK,
+  ADD_MARK,
+  ADD_COMMENT
 } from '../actions';
 
 export const reviewRequestInitialState = {
@@ -46,6 +48,66 @@ export function reviewRequestReducer(state = reviewRequestInitialState, { type, 
           const newItems = items.map(item => {
             if (item.id === itemId) {
               item.selfMark = value;
+            }
+
+            return item;
+          });
+
+          return { ...requirement, items: newItems };
+        }
+
+        return requirement;
+      });
+      return { ...state, requirements: newRequirements };
+    }
+
+    case ADD_MARK: {
+      const { value, requirementId, itemId, githubId } = payload;
+      const { requirements } = state;
+      const newRequirements = requirements.map(requirement => {
+        if (requirement.id === requirementId) {
+          const { items } = requirement;
+          const newItems = items.map(item => {
+            if (item.id === itemId) {
+              const newMarks = item.marks.map(mark => {
+                if (mark.examinerId === githubId) {
+                  mark.mark = value;
+                }
+
+                return mark;
+              });
+
+              return { ...item, marks: newMarks };
+            }
+
+            return item;
+          });
+
+          return { ...requirement, items: newItems };
+        }
+
+        return requirement;
+      });
+      return { ...state, requirements: newRequirements };
+    }
+
+    case ADD_COMMENT: {
+      const { value, requirementId, itemId, githubId } = payload;
+      const { requirements } = state;
+      const newRequirements = requirements.map(requirement => {
+        if (requirement.id === requirementId) {
+          const { items } = requirement;
+          const newItems = items.map(item => {
+            if (item.id === itemId) {
+              const newMarks = item.marks.map(mark => {
+                if (mark.examinerId === githubId) {
+                  mark.comment = value;
+                }
+
+                return mark;
+              });
+
+              return { ...item, marks: newMarks };
             }
 
             return item;
