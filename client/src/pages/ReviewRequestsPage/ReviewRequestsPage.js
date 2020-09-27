@@ -35,7 +35,7 @@ import { useHttp } from '../../hooks';
 import { AuthContext } from '../../context/AuthContext';
 
 import { CreateReviewRequest, CheckReviewRequest } from './component';
-import { createColomns, buttonsStepOne, buttonsStepTwo } from './Data';
+import { createColumns, buttonsStepOne, buttonsStepTwo } from './Data';
 
 const reviewRequestInitialState = {
   id: '',
@@ -221,7 +221,7 @@ export const ReviewRequestsPage = () => {
     }
   };
 
-  const columns = createColomns(
+  const columns = createColumns(
     githubId,
     editReviewRequestHandler,
     deleteReviewRequestHandler,

@@ -8,7 +8,7 @@ import Highlighter from 'react-highlight-words';
 import { Button, Input, Space } from 'antd';
 import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-export const createColomns = (
+export const createColumns = (
   githubId,
   editReviewRequestHandler,
   deleteReviewRequestHandler,

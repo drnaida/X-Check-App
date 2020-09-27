@@ -1,2 +1,2 @@
-export * from './dataColomns';
+export * from './dataColumns';
 export * from './dataButtons';
