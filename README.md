@@ -13,11 +13,13 @@
 ## User roles:
 
 * student: 
-  - can look throgh the tasks
+  - can look through the tasks
   - create, edit and delete review requests
   - check review request of other users
-  - look throgh review result and disput it
+  - look through review result and disput it
 * author, superviser, course manager:
   - have all privileges like a student
   - plus can create, edit and delete new tasks
   - create cross-check sessions
+
+User role can be selected during the registration
