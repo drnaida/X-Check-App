@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uuid = require('uuid');
 
 const itemSchema = new mongoose.Schema({
   id: String,
@@ -14,6 +15,7 @@ const itemSchema = new mongoose.Schema({
 
 const taskSchema = new mongoose.Schema({
   id: String,
+  key: {type: String, default: uuid.v1},
   title: String,
   author: String,
   deadline: String,
@@ -23,8 +25,8 @@ const taskSchema = new mongoose.Schema({
 });
 
 taskSchema.statics.toResponse = task => {
-  const {id, title, author, deadline, state, categories, requirements} = task;
-  return {id, title, author, deadline, state, categories, requirements}
+  const {id, key, title, author, deadline, state, categories, requirements} = task;
+  return {id, key, title, author, deadline, state, categories, requirements}
 };
 
 const Task = mongoose.model('Task', taskSchema);
