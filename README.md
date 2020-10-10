@@ -1,14 +1,24 @@
 # X-Check-App
 
-## Technologies used:
+## Libraries, technologies, and frameworks we used:
 
-* React
-* Redux
-* Ant Desing
-* Momentjs
-* Node.js
-* Express
-* MongoDB
+* Redux. On our client-side, we used a bundle of React-Redux to control the state of the app. Redux is recommended for use in medium or big size apps when it becomes difficult to control app using the standard manager of states. For educational goals, we decided to use React in our app. The advantage of redux is that the state of the app is stored in one place and helps us to get rid of props drilling. Its disadvantage is that it's difficult to understand Redux architecture if you're a beginner. 
+
+* Ant Desing. For styling, we used Ant Design. Its advantage is that it contains a lot of pre-styled components like tables, notifications, modal windows and etc. We haven't found any disadvantages of Ant Design when it comes to this project.
+
+* Momentjs. It's a library for working with dates. Its advantage is that it provides a much easier and comprehensive interface for working with time than the native types of JavaScript it wraps. We haven't found any disadvantages of Momentjs when it comes to this project.
+
+* MongoDB. Our app is developed on the MERN stack (MongoDB, Express, React, Node.js). Mongodb advantages are flexible JSON-format of documents and simple scalability. Disadvantages - there is no connection between collections and no ability to merge them.
+
+* Express. Advantages of express.js are simplicity, flexibility, great scalability, and broad documentation. We haven't found any disadvantages of Express when it comes to this project.
+
+* React. The main advantage of React for our team is that linking JavaScript and HTML using JSX makes components easier to understand and change. We haven't found any disadvantages of React when it comes to this project.
+
+* Node.js. The server-side is made on Node.js together with Express, Mongoose, and MongoDB. Pros of Node.js – JavaScript, huge amount of external libraries and pre-made modules, lightness. Cons - because of the flexibility and fast evolution it's necessary to constantly keep up with updates. 
+
+In addition, our team used bcrypt library for hashing passwords, Jwt for giving access to API only for authorized users, Winston for logging requests and errors.
+
+
 
 ## User roles:
 
