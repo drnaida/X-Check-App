@@ -27,7 +27,9 @@ import {
   addSelfMakrAction,
   addReviewRequest,
   editReviewRequest,
-  deleteReviewRequest
+  deleteReviewRequest,
+  addMakrAction,
+  addCommentAction
 } from '../../store/actions';
 
 import { useHttp } from '../../hooks';
@@ -60,6 +62,7 @@ export const ReviewRequestsPage = () => {
   const reviewRequest = useSelector(reviewRequestSelector);
   const { taskId, taskTitle, deployLink, pullRequestLink } = reviewRequest;
   const [isEditing, setIsEditing] = useState(false);
+  const [isChecking, setIsChecking] = useState(false);
   const [isSelfCheck, setIsSelfCheck] = useState(false);
   const [visebleModalWindow, setVisibleModalWindow] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -67,6 +70,17 @@ export const ReviewRequestsPage = () => {
   const fileredReviewRequestList = reviewRequestList.filter(
     listItem => listItem.state === 'PUBLISHED' || listItem.student === githubId
   );
+  let modalWindowTitle = '';
+
+  if (isSelfCheck && isEditing) {
+    modalWindowTitle = 'Edit review request';
+  } else if (isChecking) {
+    modalWindowTitle = 'Check review request';
+  } else if (isSelfCheck) {
+    modalWindowTitle = 'Self-checking';
+  } else {
+    modalWindowTitle = 'Create review request';
+  }
 
   const warning = (message, description) => {
     notification.warning({
@@ -79,6 +93,7 @@ export const ReviewRequestsPage = () => {
 
   const handleCancelButtonModalWindow = () => {
     setIsEditing(false);
+    setIsChecking(false);
     setIsSelfCheck(false);
     setVisibleModalWindow(false);
 
@@ -158,7 +173,7 @@ export const ReviewRequestsPage = () => {
 
       let res;
 
-      if (isEditing) {
+      if (isEditing || isChecking) {
         res = await editReviewRequest(newReviewRequest.id, newReviewRequest, request, token);
       } else {
         res = await addReviewRequest(newReviewRequest, request, token);
@@ -168,7 +183,7 @@ export const ReviewRequestsPage = () => {
         let message = '';
         const description = '';
 
-        if (isEditing) {
+        if (isEditing || isChecking) {
           message = 'Review request has been changed';
         } else {
           message = 'Review request has been added';
@@ -221,10 +236,55 @@ export const ReviewRequestsPage = () => {
     }
   };
 
+  const checkReviewRequest = async id => {
+    const reviewRequestById = await getReviewRequestById(id, request, token);
+    const { examiner, requirements } = reviewRequestById;
+    const IsExaminer = examiner.find(item => item.id === githubId);
+    let newReviewRequest;
+
+    if (!IsExaminer) {
+      const newRequirements = requirements.map(requirement => {
+        const { items } = requirement;
+        const newItems = items.map(item => {
+          const { marks } = item;
+          const mark = {
+            examinerId: githubId,
+            mark: item.selfMark,
+            comment: '',
+            dispute: {
+              id: uuidv4(),
+              comment: '',
+              state: null,
+              suggestedScore: 0
+            }
+          };
+
+          marks.push(mark);
+
+          return { ...item, marks };
+        });
+
+        return { ...requirement, items: newItems };
+      });
+
+      examiner.push({ id: githubId, comment: '' });
+
+      newReviewRequest = { ...reviewRequestById, examiner, requirements: newRequirements };
+    } else {
+      newReviewRequest = reviewRequestById;
+    }
+
+    dispatch(setReviewRequestAction(newReviewRequest));
+
+    setIsChecking(true);
+    setVisibleModalWindow(true);
+  };
+
   const columns = createColumns(
     githubId,
     editReviewRequestHandler,
     deleteReviewRequestHandler,
+    checkReviewRequest,
     { searchText, setSearchText },
     { searchedColumn, setSearchedColumn }
   );
@@ -262,11 +322,27 @@ export const ReviewRequestsPage = () => {
   };
 
   const addSelfMark = (value, requirementId, itemId) => {
-    dispatch(addSelfMakrAction({ value, requirementId, itemId }));
+    if (isChecking) {
+      dispatch(addMakrAction({ value, requirementId, itemId, githubId }));
+    } else {
+      dispatch(addSelfMakrAction({ value, requirementId, itemId }));
+    }
+  };
+
+  const addComment = (event, requirementId, itemId) => {
+    const {
+      target: { value }
+    } = event;
+
+    dispatch(addCommentAction({ value, requirementId, itemId, githubId }));
   };
 
   const btnStepOne = buttonsStepOne(handleCancelButtonModalWindow, handleNextButtonModalWindow);
-  const btnStepTwo = buttonsStepTwo(handleCancelButtonModalWindow, handleSaveButtonModalWindow);
+  const btnStepTwo = buttonsStepTwo(
+    handleCancelButtonModalWindow,
+    handleSaveButtonModalWindow,
+    isChecking
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -298,12 +374,12 @@ export const ReviewRequestsPage = () => {
           rowKey={record => record.id}
         />
         <ModalWindow
-          width={!isSelfCheck ? 600 : '90%'}
-          title={!isSelfCheck ? 'Create review request' : 'Self-checking'}
+          width={!isSelfCheck && !isChecking ? 600 : '90%'}
+          title={modalWindowTitle}
           visible={visebleModalWindow}
-          buttons={!isSelfCheck ? btnStepOne : btnStepTwo}
+          buttons={!isSelfCheck && !isChecking ? btnStepOne : btnStepTwo}
         >
-          {!isSelfCheck ? (
+          {!isSelfCheck && !isChecking ? (
             <CreateReviewRequest
               taskList={taskList}
               changeTaskData={changeTaskData}
@@ -312,10 +388,13 @@ export const ReviewRequestsPage = () => {
             />
           ) : (
             <CheckReviewRequest
+              githubId={githubId}
               isEditing={isEditing}
+              isChecking={isChecking}
               addSelfMark={addSelfMark}
               changeTaskSolutionLink={changeTaskSolutionLink}
               changePullRequestLink={changePullRequestLink}
+              addComment={addComment}
             />
           )}
         </ModalWindow>

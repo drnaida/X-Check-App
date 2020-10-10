@@ -4,6 +4,8 @@ export const ADD_TASK_TITLE = 'ADD_TASK_TITLE';
 export const ADD_TASK_SOLUTION_LINK = 'ADD_TASK_SOLUTION_LINK';
 export const ADD_PULL_REQUEST_LINK = 'ADD_PULL_REQUEST_LINK';
 export const ADD_SELF_MARK = 'ADD_SELF_MARK';
+export const ADD_MARK = 'ADD_MARK';
+export const ADD_COMMENT = 'ADD_COMMENT';
 
 export function setReviewRequestAction(reviewRequest) {
   return { type: SET_REVIEW_REQUEST, payload: reviewRequest };
@@ -27,6 +29,14 @@ export function addPullRequestLinkAction(pullRequestLink) {
 
 export function addSelfMakrAction(selfMark) {
   return { type: ADD_SELF_MARK, payload: selfMark };
+}
+
+export function addMakrAction(mark) {
+  return { type: ADD_MARK, payload: mark };
+}
+
+export function addCommentAction(comment) {
+  return { type: ADD_COMMENT, payload: comment };
 }
 
 export const getReviewRequestById = async (id, request, token) => {
